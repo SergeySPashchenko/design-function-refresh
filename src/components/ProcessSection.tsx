@@ -1,5 +1,4 @@
-import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { motion } from "framer-motion";
 
 const steps = [
   { num: "01", title: "Research", desc: "We source only the finest compounds, backed by scientific data, to create top quality formulas." },
@@ -9,15 +8,13 @@ const steps = [
 ];
 
 const ProcessSection = () => {
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-100px" });
-
   return (
-    <section id="process" className="py-24 md:py-32 bg-background" ref={ref}>
+    <section id="process" className="py-24 md:py-32 bg-background">
       <div className="container mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
           transition={{ duration: 0.6 }}
           className="text-center mb-20"
         >
@@ -36,8 +33,9 @@ const ProcessSection = () => {
             <motion.div
               key={step.num}
               initial={{ opacity: 0, y: 40 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.2 * i }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.15 * i }}
               className={`relative flex items-start gap-8 mb-16 last:mb-0 ${
                 i % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
               }`}
