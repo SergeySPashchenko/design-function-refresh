@@ -1,5 +1,4 @@
-import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { motion } from "framer-motion";
 import { TrendingUp, BookOpen, Truck, Users, Beaker } from "lucide-react";
 
 const cards = [
@@ -11,15 +10,13 @@ const cards = [
 ];
 
 const ExpertiseSection = () => {
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-100px" });
-
   return (
-    <section id="expertise" className="py-24 md:py-32 bg-card" ref={ref}>
+    <section id="expertise" className="py-24 md:py-32 bg-card">
       <div className="container mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
@@ -37,8 +34,9 @@ const ExpertiseSection = () => {
             <motion.div
               key={card.title}
               initial={{ opacity: 0, y: 40 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.15 * i }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.1 * i }}
               whileHover={{ y: -8, transition: { duration: 0.3 } }}
               className={`group relative bg-gradient-to-br ${card.color} rounded-2xl p-8 text-center cursor-pointer border border-border hover:border-primary/30 transition-colors`}
             >
