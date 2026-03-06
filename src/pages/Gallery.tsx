@@ -3,9 +3,10 @@ import Footer from "@/components/Footer";
 import { motion } from "framer-motion";
 
 const images = [
-      "/design-function-refresh/assets/about-img-Clmyjdti.jpg",
-      "/design-function-refresh/assets/hero-bg-DmuVkZmg.jpg",
-      // Add more images as needed
+      "/design-function-refresh/assets/bottle.png",
+      "/design-function-refresh/assets/lab.png",
+      "/design-function-refresh/assets/herbs.png",
+      "/design-function-refresh/assets/warehouse.png",
 ];
 
 const Gallery = () => {

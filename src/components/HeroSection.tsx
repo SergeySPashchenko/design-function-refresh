@@ -6,7 +6,7 @@ const HeroSection = () => {
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0">
-        <img src={heroBg} alt="Natural supplements and herbs" className="w-full h-full object-cover" />
+        <img src="/design-function-refresh/assets/lab.png" alt="Natural supplements and herbs" className="w-full h-full object-cover" />
         <div className="absolute inset-0 bg-hero-overlay/60" />
       </div>
 

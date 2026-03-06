@@ -15,7 +15,7 @@ const AboutSection = () => {
           {/* Image */}
           <div className="relative">
             <div className="overflow-hidden rounded-2xl">
-              <img src={aboutImg} alt="Scientist researching natural extracts" className="w-full h-[500px] object-cover" />
+              <img src="/design-function-refresh/assets/bottle.png" alt="Scientist researching natural extracts" className="w-full h-[500px] object-cover" />
             </div>
             <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-primary/10 rounded-2xl -z-10" />
             <div className="absolute -top-6 -left-6 w-24 h-24 border-2 border-primary/20 rounded-2xl -z-10" />

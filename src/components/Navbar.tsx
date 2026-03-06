@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const navLinks = [
   { label: "Home", href: "/" },
@@ -14,6 +14,8 @@ const navLinks = [
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const location = useLocation();
+  const isHome = location.pathname === "/";
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 50);
@@ -26,14 +28,14 @@ const Navbar = () => {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled || !isHome
         ? "bg-background/90 backdrop-blur-md shadow-sm border-b border-border"
         : "bg-transparent"
         }`}
     >
       <div className="container mx-auto flex items-center justify-between py-4 px-6">
         <Link to="/" className="font-display text-2xl font-bold tracking-tight">
-          <span className={scrolled ? "text-foreground" : "text-primary-foreground"}>
+          <span className={scrolled || !isHome ? "text-foreground" : "text-primary-foreground"}>
             IDINGO
           </span>
           <span className="text-primary">.</span>
@@ -45,7 +47,7 @@ const Navbar = () => {
             <li key={link.href}>
               <Link
                 to={link.href}
-                className={`font-body text-sm font-medium tracking-wide uppercase transition-colors hover:text-primary ${scrolled ? "text-foreground" : "text-primary-foreground/80"
+                className={`font-body text-sm font-medium tracking-wide uppercase transition-colors hover:text-primary ${scrolled || !isHome ? "text-foreground" : "text-primary-foreground/80"
                   }`}
               >
                 {link.label}
@@ -57,7 +59,7 @@ const Navbar = () => {
         {/* Mobile toggle */}
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
-          className={`md:hidden ${scrolled ? "text-foreground" : "text-primary-foreground"}`}
+          className={`md:hidden ${scrolled || !isHome ? "text-foreground" : "text-primary-foreground"}`}
         >
           {mobileOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
