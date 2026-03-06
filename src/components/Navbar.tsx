@@ -1,13 +1,14 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const navLinks = [
-  { label: "Home", href: "#home" },
-  { label: "About", href: "#about" },
-  { label: "Expertise", href: "#expertise" },
-  { label: "Process", href: "#process" },
-  { label: "Contact", href: "#contact" },
+  { label: "Home", href: "/" },
+  { label: "About", href: "/about" },
+  { label: "Process", href: "/process" },
+  { label: "Gallery", href: "/gallery" },
+  { label: "Contact", href: "/contact" },
 ];
 
 const Navbar = () => {
@@ -25,32 +26,30 @@ const Navbar = () => {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled
-          ? "bg-background/90 backdrop-blur-md shadow-sm border-b border-border"
-          : "bg-transparent"
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled
+        ? "bg-background/90 backdrop-blur-md shadow-sm border-b border-border"
+        : "bg-transparent"
+        }`}
     >
       <div className="container mx-auto flex items-center justify-between py-4 px-6">
-        <a href="#home" className="font-display text-2xl font-bold tracking-tight">
+        <Link to="/" className="font-display text-2xl font-bold tracking-tight">
           <span className={scrolled ? "text-foreground" : "text-primary-foreground"}>
             IDINGO
           </span>
           <span className="text-primary">.</span>
-        </a>
+        </Link>
 
         {/* Desktop */}
         <ul className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
             <li key={link.href}>
-              <a
-                href={link.href}
-                className={`font-body text-sm font-medium tracking-wide uppercase transition-colors hover:text-primary ${
-                  scrolled ? "text-foreground" : "text-primary-foreground/80"
-                }`}
+              <Link
+                to={link.href}
+                className={`font-body text-sm font-medium tracking-wide uppercase transition-colors hover:text-primary ${scrolled ? "text-foreground" : "text-primary-foreground/80"
+                  }`}
               >
                 {link.label}
-              </a>
+              </Link>
             </li>
           ))}
         </ul>
@@ -76,13 +75,13 @@ const Navbar = () => {
             <ul className="flex flex-col items-center gap-4 py-6">
               {navLinks.map((link) => (
                 <li key={link.href}>
-                  <a
-                    href={link.href}
+                  <Link
+                    to={link.href}
                     onClick={() => setMobileOpen(false)}
                     className="font-body text-sm font-medium uppercase text-foreground hover:text-primary transition-colors"
                   >
                     {link.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
