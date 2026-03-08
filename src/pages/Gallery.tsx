@@ -87,11 +87,12 @@ const Gallery = () => {
           </motion.div>
 
           {/* Category Filter */}
-          <div className="flex flex-wrap justify-center gap-3 mb-12">
+          <div className="flex flex-wrap justify-center gap-3 mb-12" role="group" aria-label="Filter by category">
             {categories.map((cat) => (
               <button
                 key={cat}
                 onClick={() => setActiveCategory(cat)}
+                aria-pressed={activeCategory === cat}
                 className={`px-5 py-2.5 rounded-full font-body text-sm font-medium transition-all duration-300 ${
                   activeCategory === cat
                     ? "bg-primary text-primary-foreground shadow-lg shadow-primary/20"
