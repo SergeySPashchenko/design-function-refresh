@@ -61,7 +61,7 @@ const Footer = () => (
     </div>
 
     <div className="container mx-auto px-6 mt-16 pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4">
-      <p className="font-body text-xs text-[hsl(40,10%,35%)]">
+      <p className="font-body text-xs text-[hsl(40,10%,55%)]">
         © {new Date().getFullYear()} Idingo LLC. All rights reserved.
       </p>
       <div className="flex gap-6 text-xs text-[hsl(40,10%,35%)]">
