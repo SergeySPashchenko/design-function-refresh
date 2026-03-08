@@ -88,7 +88,6 @@ const Navbar = () => {
                 ? "text-foreground hover:bg-muted"
                 : "text-hero-text/80 hover:bg-hero-text/10"
             }`}
-            }`}
           >
             <AnimatePresence mode="wait">
               {dark ? (
