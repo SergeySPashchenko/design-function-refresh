@@ -210,8 +210,11 @@ export default function Experience() {
   useSEO({ title: "The IDINGO Experience — From Nature to Science", description: "Explore IDINGO's research journey: ingredient sourcing, lab analysis, clinical validation, and bioavailability-enhanced formulations." });
   const assemblyRef = useRef<HTMLDivElement>(null);
   const heroRef = useRef<HTMLElement>(null);
+  const timelineRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress: heroProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
   const heroImgY = useTransform(heroProgress, [0, 1], ["0%", "30%"]);
+  const { scrollYProgress: timelineProgress } = useScroll({ target: timelineRef, offset: ["start end", "end start"] });
+  const lineHeight = useTransform(timelineProgress, [0, 1], ["0%", "100%"]);
 
   return (
     <div className="min-h-screen bg-background">
