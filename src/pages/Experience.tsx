@@ -268,9 +268,10 @@ export default function Experience() {
             <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-border -translate-x-px" />
 
             <div className="flex flex-col gap-8 md:gap-12">
-            {researchJourney.map((item, i) => (
-              <TimelineStep key={item.step} item={item} index={i} total={researchJourney.length} />
-            ))}
+              {researchJourney.map((item, i) => (
+                <TimelineStep key={item.step} item={item} index={i} total={researchJourney.length} />
+              ))}
+            </div>
           </div>
         </div>
       </section>
