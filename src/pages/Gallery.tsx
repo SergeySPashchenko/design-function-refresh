@@ -1,5 +1,5 @@
-import { motion, AnimatePresence } from "framer-motion";
-import { useState } from "react";
+import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
+import { useState, useRef } from "react";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -26,6 +26,9 @@ const galleryItems = [
 const categories = ["All", "Products", "Research", "Sourcing", "Logistics"];
 
 const Gallery = () => {
+  const heroRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
+  const heroImgY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
   const [activeCategory, setActiveCategory] = useState("All");
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
@@ -47,10 +50,10 @@ const Gallery = () => {
       <Navbar />
 
       {/* HERO */}
-      <section className="relative min-h-[70vh] flex items-center overflow-hidden">
-        <div className="absolute inset-0 z-0">
-          <img src={galleryHero} alt="IDINGO products showcase" className="w-full h-full object-cover" />
-        </div>
+      <section ref={heroRef} className="relative min-h-[70vh] flex items-center overflow-hidden">
+        <motion.div className="absolute inset-0 z-0" style={{ y: heroImgY }}>
+          <img src={galleryHero} alt="IDINGO products showcase" className="w-full h-full object-cover scale-[1.15]" />
+        </motion.div>
         <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/40 z-10" />
         <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent z-10" />
         <div className="relative z-20 container mx-auto px-6 pt-24">

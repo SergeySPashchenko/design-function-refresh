@@ -36,7 +36,10 @@ const team = [
 ];
 
 const About = () => {
+  const heroRef = useRef<HTMLElement>(null);
   const timelineRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress: heroProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
+  const heroImgY = useTransform(heroProgress, [0, 1], ["0%", "30%"]);
   const { scrollYProgress } = useScroll({
     target: timelineRef,
     offset: ["start end", "end start"],
@@ -48,10 +51,10 @@ const About = () => {
       <Navbar />
 
       {/* HERO */}
-      <section className="relative min-h-[70vh] flex items-center overflow-hidden">
-        <div className="absolute inset-0 z-0">
-          <img src={aboutHero} alt="IDINGO laboratory" className="w-full h-full object-cover" />
-        </div>
+      <section ref={heroRef} className="relative min-h-[70vh] flex items-center overflow-hidden">
+        <motion.div className="absolute inset-0 z-0" style={{ y: heroImgY }}>
+          <img src={aboutHero} alt="IDINGO laboratory" className="w-full h-full object-cover scale-[1.15]" />
+        </motion.div>
         <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/40 z-10" />
         <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent z-10" />
         <div className="relative z-20 container mx-auto px-6 pt-24">

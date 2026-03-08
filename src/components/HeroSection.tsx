@@ -1,19 +1,24 @@
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 
 const HeroSection = () => {
+  const heroRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
+  const imgY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
+
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section ref={heroRef} id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background */}
-      <div className="absolute inset-0">
+      <motion.div className="absolute inset-0" style={{ y: imgY }}>
         <img
           src={`${import.meta.env.BASE_URL}assets/lab.png`}
           alt="Natural supplements and herbs"
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover scale-[1.15]"
         />
         {/* Multi-layer overlay for guaranteed readability */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/80" />
         <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-transparent to-black/40" />
-      </div>
+      </motion.div>
 
       <div className="relative z-10 container mx-auto px-6 text-center">
         <motion.p
