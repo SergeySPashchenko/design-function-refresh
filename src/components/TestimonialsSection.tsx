@@ -128,6 +128,7 @@ const TestimonialsSection = () => {
           </div>
           <button
             onClick={() => go(1)}
+            aria-label="Next testimonial"
             className="w-10 h-10 rounded-full border border-border flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-primary transition-colors"
           >
             <ChevronRight className="w-5 h-5" />

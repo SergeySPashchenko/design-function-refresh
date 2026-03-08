@@ -22,7 +22,7 @@ const Footer = () => (
         </p>
       </div>
 
-      <div>
+        <nav aria-label="Footer navigation">
         <h4 className="font-bold mb-6 uppercase tracking-wider text-sm">Navigation</h4>
         <ul className="space-y-3 text-background/60 text-sm">
           {navLinks.map((link) => (

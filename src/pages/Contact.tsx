@@ -255,6 +255,8 @@ const Contact = () => {
               >
                 <button
                   onClick={() => setOpenFaq(openFaq === i ? null : i)}
+                  aria-expanded={openFaq === i}
+                  aria-controls={`faq-panel-${i}`}
                   className="w-full flex items-center justify-between p-5 text-left"
                 >
                   <span className="font-body text-sm font-medium text-foreground pr-4">{faq.q}</span>
