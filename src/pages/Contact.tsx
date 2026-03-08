@@ -65,8 +65,8 @@ const Contact = () => {
         <motion.div className="absolute inset-0 z-0" style={{ y: heroImgY }}>
           <img src={contactHero} alt="Get in touch with IDINGO" className="w-full h-full object-cover scale-[1.15]" />
         </motion.div>
-        <div className="absolute inset-0 bg-gradient-to-r from-black/30 via-black/15 to-transparent z-10" />
-        <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent z-10" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-black/25 to-black/10 z-10" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent z-10" />
         <div className="relative z-20 container mx-auto px-6 pt-24">
           <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2, duration: 0.8 }} className="font-body text-sm tracking-[0.3em] uppercase text-primary font-semibold mb-4">
             Contact Us
