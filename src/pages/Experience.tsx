@@ -1,8 +1,9 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-import { Beaker, Leaf, Brain, Heart, Shield, Zap, FlaskConical, Microscope, Sprout, Dna, Atom } from "lucide-react";
+import { Beaker, Leaf, Brain, Heart, Shield, Zap, FlaskConical, Microscope, Sprout, Search, TestTubes, PackageCheck, ArrowRight } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import botanicalHero from "@/assets/botanical-hero.jpg";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
@@ -18,6 +19,57 @@ const ingredients = [
   { name: "Omega-3 DHA", benefit: "Brain & Heart", icon: Heart },
   { name: "Rhodiola Rosea", benefit: "Endurance", icon: Leaf },
   { name: "Curcumin C3", benefit: "Inflammation", icon: Beaker },
+];
+
+const researchJourney = [
+  {
+    step: "01",
+    title: "Збір та відбір рослин",
+    titleEn: "Plant Sourcing",
+    desc: "Ми співпрацюємо з сертифікованими органічними фермами в Індії, Перу та Скандинавії. Кожна рослина вирощується без пестицидів, збирається вручну в пік біологічної активності.",
+    detail: "Контроль ґрунту, клімату та сезонності забезпечує максимальну концентрацію активних речовин.",
+    icon: Sprout,
+  },
+  {
+    step: "02",
+    title: "Екстракція та стандартизація",
+    titleEn: "Extraction & Standardization",
+    desc: "Сировина проходить м'яку водно-спиртову або CO₂-екстракцію для збереження повного фітохімічного профілю. Кожен екстракт стандартизується до точного відсотка активних сполук.",
+    detail: "Наприклад, Ashwagandha стандартизується до ≥5% вітанолідів, Curcumin — до 95% куркуміноїдів.",
+    icon: FlaskConical,
+  },
+  {
+    step: "03",
+    title: "Лабораторний аналіз",
+    titleEn: "Laboratory Analysis",
+    desc: "Незалежні лабораторії проводять повний спектр тестування: важкі метали, мікробіологія, пестициди, розчинники та ідентифікація через HPLC/масс-спектрометрію.",
+    detail: "Кожна партія отримує Certificate of Analysis (CoA) з детальними результатами.",
+    icon: Microscope,
+  },
+  {
+    step: "04",
+    title: "Клінічна валідація",
+    titleEn: "Clinical Validation",
+    desc: "Ми аналізуємо peer-reviewed дослідження з PubMed та клінічні випробування для визначення оптимальних дозувань та синергії між інгредієнтами.",
+    detail: "Кожен продукт базується мінімум на 3-5 рандомізованих контрольованих дослідженнях.",
+    icon: Search,
+  },
+  {
+    step: "05",
+    title: "Біодоступність та формуляція",
+    titleEn: "Bioavailability & Formulation",
+    desc: "Інгредієнти комбінуються з підсилювачами біодоступності — піперин для куркуміну, ліпосомальна технологія для вітамінів, хелатні форми мінералів.",
+    detail: "Це збільшує засвоєння до 20× порівняно зі стандартними формами.",
+    icon: TestTubes,
+  },
+  {
+    step: "06",
+    title: "Фінальний контроль та випуск",
+    titleEn: "Final QC & Release",
+    desc: "Готовий продукт проходить фінальну перевірку стабільності, мікробіологічного забруднення та відповідності етикетці перед запечатуванням.",
+    detail: "Кожна банка має унікальний batch-номер для повної простежуваності.",
+    icon: PackageCheck,
+  },
 ];
 
 const steps = [
@@ -40,47 +92,17 @@ export default function Experience() {
     <div className="min-h-screen bg-background">
       <Navbar />
 
-      {/* HERO */}
+      {/* HERO with botanical image */}
       <section className="relative min-h-screen flex items-center overflow-hidden">
-        {/* Animated botanical background */}
-        <div className="absolute inset-0 z-0 bg-gradient-to-br from-primary/10 via-background to-primary/5">
-          {/* Floating botanical elements */}
-          {[Leaf, Sprout, Dna, Atom, Leaf, Sprout].map((Icon, i) => (
-            <motion.div
-              key={i}
-              className="absolute text-primary/10"
-              initial={{ opacity: 0 }}
-              animate={{
-                opacity: [0.05, 0.15, 0.05],
-                y: [0, -30, 0],
-                rotate: [0, 10, -10, 0],
-              }}
-              transition={{
-                duration: 8 + i * 2,
-                repeat: Infinity,
-                delay: i * 1.5,
-              }}
-              style={{
-                left: `${10 + i * 15}%`,
-                top: `${20 + (i % 3) * 25}%`,
-              }}
-            >
-              <Icon className="w-16 h-16 md:w-24 md:h-24" />
-            </motion.div>
-          ))}
-          {/* Organic circles */}
-          <motion.div
-            className="absolute w-[500px] h-[500px] rounded-full border border-primary/10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-            animate={{ scale: [1, 1.1, 1], rotate: 360 }}
-            transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-          />
-          <motion.div
-            className="absolute w-[700px] h-[700px] rounded-full border border-primary/5 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-            animate={{ scale: [1.1, 1, 1.1], rotate: -360 }}
-            transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
+        <div className="absolute inset-0 z-0">
+          <img
+            src={botanicalHero}
+            alt="Botanical research ingredients"
+            className="w-full h-full object-cover"
           />
         </div>
-        <div className="absolute inset-0 bg-gradient-to-r from-background/90 via-background/60 to-background/40 z-10" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/40 z-10" />
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent z-10" />
         <div className="relative z-20 container mx-auto px-6 pt-24">
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -94,20 +116,20 @@ export default function Experience() {
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.3 }}
-            className="font-display text-5xl md:text-7xl lg:text-8xl font-bold leading-[1.05] max-w-3xl text-foreground"
+            className="font-display text-5xl md:text-7xl lg:text-8xl font-bold leading-[1.05] max-w-3xl text-white drop-shadow-[0_2px_20px_rgba(0,0,0,0.5)]"
           >
-            Optimize Your
+            From Nature
             <br />
-            <span className="italic font-normal text-primary">Biology</span>
+            <span className="italic font-normal text-primary">to Science</span>
             <span className="text-primary">.</span>
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="mt-6 text-lg md:text-xl text-muted-foreground max-w-xl font-body"
+            className="mt-6 text-lg md:text-xl text-white/70 max-w-xl font-body drop-shadow-[0_1px_8px_rgba(0,0,0,0.4)]"
           >
-            Precision formulated nutritional science engineered for human performance and longevity.
+            Від збору рослин до лабораторного аналізу — кожен інгредієнт проходить суворий шлях перевірки.
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -115,18 +137,77 @@ export default function Experience() {
             transition={{ duration: 0.8, delay: 0.9 }}
             className="mt-10 flex gap-4"
           >
-            <a href="#science" className="px-8 py-4 bg-primary text-primary-foreground font-body font-semibold text-sm uppercase tracking-wider rounded-full hover:bg-accent transition-all duration-300 hover:scale-105">
-              Explore Science
+            <a href="#research-journey" className="px-8 py-4 bg-primary text-primary-foreground font-body font-semibold text-sm uppercase tracking-wider rounded-full hover:bg-accent transition-all duration-300 hover:scale-105">
+              Дослідження
             </a>
-            <a href="#products" className="px-8 py-4 border border-border text-foreground font-body font-semibold text-sm uppercase tracking-wider rounded-full hover:bg-muted transition-all duration-300">
-              View Products
+            <a href="#science" className="px-8 py-4 border border-white/30 text-white font-body font-semibold text-sm uppercase tracking-wider rounded-full hover:bg-white/10 transition-all duration-300">
+              Інгредієнти
             </a>
           </motion.div>
         </div>
       </section>
 
+      {/* RESEARCH JOURNEY — New detailed section */}
+      <section id="research-journey" className="py-24 md:py-32">
+        <div className="container mx-auto px-6">
+          <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} className="text-center mb-20">
+            <p className="font-body text-sm tracking-[0.2em] uppercase text-primary font-semibold mb-3">Дослідження інгредієнтів</p>
+            <h2 className="font-display text-3xl md:text-5xl font-bold mb-6 text-foreground">
+              Від рослини до <span className="italic text-primary">формули</span>
+            </h2>
+            <p className="text-muted-foreground text-lg max-w-2xl mx-auto font-body">
+              Кожен продукт IDINGO проходить 6 етапів дослідження та контролю якості — від поля до вашої полиці.
+            </p>
+          </motion.div>
+
+          <div className="max-w-4xl mx-auto space-y-6">
+            {researchJourney.map((item, i) => {
+              const Icon = item.icon;
+              return (
+                <motion.div
+                  key={item.step}
+                  initial={{ opacity: 0, x: i % 2 === 0 ? -40 : 40 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.7, delay: i * 0.1 }}
+                  className="group relative grid md:grid-cols-[80px_1fr] gap-6 p-6 md:p-8 rounded-2xl bg-card border border-border hover:border-primary/40 transition-all duration-500 hover:shadow-lg hover:shadow-primary/5"
+                >
+                  {/* Step number + icon */}
+                  <div className="flex md:flex-col items-center gap-3">
+                    <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors duration-300">
+                      <Icon className="w-6 h-6 text-primary" />
+                    </div>
+                    <span className="font-display text-xs font-bold text-muted-foreground tracking-wider">{item.step}</span>
+                  </div>
+
+                  {/* Content */}
+                  <div>
+                    <div className="flex items-baseline gap-3 mb-3">
+                      <h3 className="font-display text-xl font-bold text-foreground">{item.title}</h3>
+                      <span className="text-xs text-muted-foreground font-body hidden md:inline">/ {item.titleEn}</span>
+                    </div>
+                    <p className="text-muted-foreground font-body leading-relaxed mb-3">
+                      {item.desc}
+                    </p>
+                    <div className="flex items-start gap-2 p-3 rounded-xl bg-primary/5 border border-primary/10">
+                      <ArrowRight className="w-4 h-4 text-primary mt-0.5 shrink-0" />
+                      <p className="text-sm text-muted-foreground font-body">{item.detail}</p>
+                    </div>
+                  </div>
+
+                  {/* Connecting line */}
+                  {i < researchJourney.length - 1 && (
+                    <div className="hidden md:block absolute -bottom-3 left-[40px] w-px h-6 bg-border" />
+                  )}
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
       {/* STORY */}
-      <section id="story" className="py-24 md:py-32">
+      <section id="story" className="py-24 md:py-32 bg-card">
         <div className="container mx-auto px-6">
           <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} className="max-w-3xl mx-auto text-center">
             <p className="font-body text-sm tracking-[0.2em] uppercase text-primary font-semibold mb-3">Our Story</p>
@@ -146,7 +227,7 @@ export default function Experience() {
       </section>
 
       {/* SCIENCE — Ingredients */}
-      <section id="science" className="py-24 md:py-32 bg-card">
+      <section id="science" className="py-24 md:py-32">
         <div className="container mx-auto px-6 text-center">
           <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }}>
             <p className="font-body text-sm tracking-[0.2em] uppercase text-primary font-semibold mb-3">Ingredients</p>
@@ -168,7 +249,7 @@ export default function Experience() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.08 }}
-                  className="p-6 rounded-2xl bg-background border border-border hover:border-primary/50 transition-all duration-300 group hover:shadow-lg hover:shadow-primary/5"
+                  className="p-6 rounded-2xl bg-card border border-border hover:border-primary/50 transition-all duration-300 group hover:shadow-lg hover:shadow-primary/5"
                 >
                   <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4 mx-auto group-hover:bg-primary/20 transition-colors">
                     <Icon className="w-5 h-5 text-primary" />
@@ -183,7 +264,7 @@ export default function Experience() {
       </section>
 
       {/* FORMULATION PROCESS */}
-      <section ref={assemblyRef} className="py-24 md:py-32">
+      <section ref={assemblyRef} className="py-24 md:py-32 bg-card">
         <div className="container mx-auto px-6">
           <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="text-center mb-16">
             <p className="font-body text-sm tracking-[0.2em] uppercase text-primary font-semibold mb-3">Process</p>
@@ -200,7 +281,7 @@ export default function Experience() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.15 }}
-                className="relative p-6 rounded-2xl bg-card border border-border text-center group hover:border-primary/40 transition-all duration-300"
+                className="relative p-6 rounded-2xl bg-background border border-border text-center group hover:border-primary/40 transition-all duration-300"
               >
                 <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4 text-primary font-display font-bold text-sm">
                   {i + 1}
@@ -217,7 +298,7 @@ export default function Experience() {
       </section>
 
       {/* PRODUCTS */}
-      <section id="products" className="py-24 md:py-32 bg-card">
+      <section id="products" className="py-24 md:py-32">
         <div className="container mx-auto px-6">
           <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="text-center mb-16">
             <p className="font-body text-sm tracking-[0.2em] uppercase text-primary font-semibold mb-3">Products</p>
@@ -240,7 +321,7 @@ export default function Experience() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.15 }}
-                  className="group rounded-2xl bg-background border border-border overflow-hidden hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:shadow-primary/5"
+                  className="group rounded-2xl bg-card border border-border overflow-hidden hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:shadow-primary/5"
                 >
                   <div className="aspect-[4/3] bg-gradient-to-br from-primary/5 to-primary/15 flex items-center justify-center">
                     <div className="w-20 h-20 rounded-2xl bg-primary/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
@@ -262,7 +343,7 @@ export default function Experience() {
       </section>
 
       {/* RESEARCH */}
-      <section id="research" className="py-24 md:py-32">
+      <section id="research" className="py-24 md:py-32 bg-card">
         <div className="container mx-auto px-6 text-center">
           <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}>
             <p className="font-body text-sm tracking-[0.2em] uppercase text-primary font-semibold mb-3">Transparency</p>
@@ -288,7 +369,7 @@ export default function Experience() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.1 }}
-                  className="p-8 rounded-2xl bg-card border border-border"
+                  className="p-8 rounded-2xl bg-background border border-border"
                 >
                   <Icon className="w-6 h-6 text-primary mx-auto mb-4" />
                   <p className="font-display text-3xl font-bold text-foreground mb-1">{item.stat}</p>
