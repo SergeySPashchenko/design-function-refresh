@@ -1,4 +1,4 @@
-import { motion, useScroll, useMotionValueEvent } from "framer-motion";
+import { motion, useScroll, useTransform, useMotionValueEvent } from "framer-motion";
 import { useRef, useState } from "react";
 import { Beaker, Leaf, Brain, Heart, Shield, Zap, FlaskConical, Microscope, Sprout, Search, TestTubes, PackageCheck, ArrowRight } from "lucide-react";
 import Navbar from "@/components/Navbar";
