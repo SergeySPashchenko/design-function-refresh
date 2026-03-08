@@ -65,7 +65,7 @@ const AboutSection = () => {
                     <f.icon className="w-5 h-5 text-primary transition-colors duration-300 group-hover/item:text-primary-foreground" />
                   </div>
                   <div>
-                    <h4 className="font-display text-lg font-semibold text-foreground">{f.title}</h4>
+                    <h3 className="font-display text-lg font-semibold text-foreground">{f.title}</h3>
                     <p className="font-body text-sm text-muted-foreground">{f.desc}</p>
                   </div>
                 </motion.div>

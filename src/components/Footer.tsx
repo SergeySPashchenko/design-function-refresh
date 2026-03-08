@@ -64,7 +64,7 @@ const Footer = () => (
       <p className="font-body text-xs text-[hsl(40,10%,55%)]">
         © {new Date().getFullYear()} Idingo LLC. All rights reserved.
       </p>
-      <div className="flex gap-6 text-xs text-[hsl(40,10%,35%)]">
+      <div className="flex gap-6 text-xs text-[hsl(40,10%,55%)]">
         <Link to="/contact" className="hover:text-primary transition-colors">Privacy Policy</Link>
         <Link to="/contact" className="hover:text-primary transition-colors">Terms of Service</Link>
       </div>
