@@ -1,5 +1,5 @@
-import { motion, AnimatePresence } from "framer-motion";
-import { useState } from "react";
+import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
+import { useState, useRef } from "react";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
