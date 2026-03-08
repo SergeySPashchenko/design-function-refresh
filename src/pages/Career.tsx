@@ -414,6 +414,7 @@ const Career = () => {
         </div>
       </section>
 
+      </main>
       <Footer />
     </div>
   );
