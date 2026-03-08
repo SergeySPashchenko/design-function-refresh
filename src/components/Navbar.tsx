@@ -128,6 +128,8 @@ const Navbar = () => {
           </button>
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
+            aria-label={mobileOpen ? "Close menu" : "Open menu"}
+            aria-expanded={mobileOpen}
             className={scrolled || !isHome ? "text-foreground" : "text-white"}
           >
             {mobileOpen ? <X size={24} /> : <Menu size={24} />}
