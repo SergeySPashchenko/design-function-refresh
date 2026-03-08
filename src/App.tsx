@@ -22,6 +22,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter basename={basename}>
+        <ScrollToTop />
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/about" element={<About />} />
