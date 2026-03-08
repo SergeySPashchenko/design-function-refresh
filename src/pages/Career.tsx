@@ -3,6 +3,7 @@ import { useState, useRef } from "react";
 import { Briefcase, Heart, TrendingUp, Users, Leaf, FlaskConical, Truck, Megaphone, Code, ChevronRight, Upload, Send, FileText, X } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useToast } from "@/hooks/use-toast";
+import { useSEO } from "@/hooks/useSEO";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import careerHero from "@/assets/career-hero.jpg";
