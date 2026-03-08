@@ -38,7 +38,7 @@ const Preloader = ({ onComplete }: { onComplete: () => void }) => {
         </p>
       </motion.div>
 
-      <div className="w-48 h-px bg-primary-foreground/10 relative overflow-hidden rounded-full">
+      <div className="w-48 h-px bg-[hsl(40,20%,92%)]/10 relative overflow-hidden rounded-full">
         <motion.div
           className="absolute inset-y-0 left-0 bg-primary"
           style={{ width: `${Math.min(progress, 100)}%` }}
