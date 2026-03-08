@@ -30,10 +30,10 @@ const Preloader = ({ onComplete }: { onComplete: () => void }) => {
         transition={{ duration: 0.5 }}
         className="text-center"
       >
-        <h1 className="font-display text-5xl md:text-7xl font-bold text-primary-foreground mb-2">
+        <h1 className="font-display text-5xl md:text-7xl font-bold text-[hsl(40,20%,92%)] mb-2">
           IDINGO<span className="text-primary">.</span>
         </h1>
-        <p className="font-body text-xs tracking-[0.3em] uppercase text-primary-foreground/40 mb-8">
+        <p className="font-body text-xs tracking-[0.3em] uppercase text-[hsl(40,20%,92%)]/40 mb-8">
           Advanced Nutritional Science
         </p>
       </motion.div>
