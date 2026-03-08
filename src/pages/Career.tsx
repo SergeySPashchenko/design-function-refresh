@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { useState, useRef } from "react";
 import { Briefcase, Heart, TrendingUp, Users, Leaf, FlaskConical, Truck, Megaphone, Code, ChevronRight, Upload, Send, FileText, X } from "lucide-react";
 import { Link } from "react-router-dom";
