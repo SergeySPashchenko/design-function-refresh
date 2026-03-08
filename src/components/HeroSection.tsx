@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-import heroBg from "@/assets/hero-bg.jpg";
 
 const HeroSection = () => {
   return (
@@ -15,7 +14,7 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3, duration: 0.8 }}
-          className="font-body text-sm tracking-[0.3em] uppercase text-primary-foreground/70 mb-6"
+          className="font-body text-sm tracking-[0.3em] uppercase text-hero-text/70 mb-6"
         >
           Nice to meet you · Est. 2008
         </motion.p>
@@ -24,7 +23,7 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5, duration: 0.8 }}
-          className="font-display text-5xl md:text-7xl lg:text-8xl font-bold text-primary-foreground leading-[1.05] mb-8"
+          className="font-display text-5xl md:text-7xl lg:text-8xl font-bold text-hero-text leading-[1.05] mb-8"
         >
           We Make Wellness
           <br />
@@ -36,7 +35,7 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.7, duration: 0.8 }}
-          className="font-body text-lg md:text-xl text-primary-foreground/70 max-w-xl mx-auto mb-10"
+          className="font-body text-lg md:text-xl text-hero-text/70 max-w-xl mx-auto mb-10"
         >
           Pure, organic, science-backed supplements — designed with you in mind. Because your health deserves better than generic.
         </motion.p>
@@ -62,7 +61,7 @@ const HeroSection = () => {
           </a>
           <a
             href="#contact"
-            className="inline-flex items-center justify-center px-8 py-4 border border-primary-foreground/30 text-primary-foreground font-body font-semibold text-sm uppercase tracking-wider rounded-full hover:bg-primary-foreground/10 transition-all duration-300 hover:border-primary-foreground/60"
+            className="inline-flex items-center justify-center px-8 py-4 border border-hero-text/30 text-hero-text font-body font-semibold text-sm uppercase tracking-wider rounded-full hover:bg-hero-text/10 transition-all duration-300 hover:border-hero-text/60"
           >
             Say Hello
           </a>
@@ -79,9 +78,9 @@ const HeroSection = () => {
         <motion.div
           animate={{ y: [0, 8, 0] }}
           transition={{ repeat: Infinity, duration: 2 }}
-          className="w-5 h-8 border-2 border-primary-foreground/40 rounded-full flex justify-center pt-1"
+          className="w-5 h-8 border-2 border-hero-text/40 rounded-full flex justify-center pt-1"
         >
-          <div className="w-1 h-2 bg-primary-foreground/60 rounded-full" />
+          <div className="w-1 h-2 bg-hero-text/60 rounded-full" />
         </motion.div>
       </motion.div>
     </section>
