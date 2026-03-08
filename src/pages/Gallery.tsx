@@ -16,13 +16,13 @@ const base = import.meta.env.BASE_URL;
 
 const galleryItems = [
   { src: `${base}assets/bottle.png`, title: "Premium Capsule Line", category: "Products", desc: "Our flagship product packaging designed for maximum freshness." },
+  { src: `${base}assets/gallery-capsules.jpg`, title: "Omega-3 Softgels", category: "Products", desc: "High-potency fish oil capsules with superior bioavailability." },
   { src: `${base}assets/lab.png`, title: "Laboratory Testing", category: "Research", desc: "HPLC and mass spectrometry analysis in our partner labs." },
+  { src: `${base}assets/gallery-scientist.jpg`, title: "Botanical Research", category: "Research", desc: "Our scientists analyze plant extracts for optimal compound profiles." },
   { src: `${base}assets/herbs.png`, title: "Raw Botanical Ingredients", category: "Sourcing", desc: "Sustainably sourced bioactive compounds before extraction." },
+  { src: `${base}assets/gallery-farm.jpg`, title: "Organic Herb Farm", category: "Sourcing", desc: "Partner farms growing medicinal herbs under controlled conditions." },
   { src: `${base}assets/warehouse.png`, title: "Distribution Center", category: "Logistics", desc: "Climate-controlled storage ensuring product integrity." },
-  { src: `${base}assets/bottle.png`, title: "Quality Seal Process", category: "Products", desc: "Every jar sealed with tamper-evident packaging." },
-  { src: `${base}assets/lab.png`, title: "Purity Verification", category: "Research", desc: "Third-party certificates of analysis for every batch." },
-  { src: `${base}assets/herbs.png`, title: "Ingredient Selection", category: "Sourcing", desc: "Careful evaluation of bioavailability and potency." },
-  { src: `${base}assets/warehouse.png`, title: "Global Shipping", category: "Logistics", desc: "Fast fulfillment to 15+ countries worldwide." },
+  { src: `${base}assets/gallery-fulfillment.jpg`, title: "Global Fulfillment", category: "Logistics", desc: "Fast order processing and shipping to 15+ countries worldwide." },
 ];
 
 const categories = ["All", "Products", "Research", "Sourcing", "Logistics"];
