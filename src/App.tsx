@@ -9,6 +9,7 @@ import Process from "./pages/Process";
 import Gallery from "./pages/Gallery";
 import Contact from "./pages/Contact";
 import Experience from "./pages/Experience";
+import Career from "./pages/Career";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
