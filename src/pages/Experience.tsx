@@ -81,7 +81,6 @@ function TimelineStep({ item, index, total }: { item: typeof researchJourney[0];
     offset: ["start 0.85", "start 0.3"],
   });
   const [isActive, setIsActive] = useState(false);
-  const lineScaleY = useTransform(scrollYProgress, [0, 1], [0, 1]);
 
   useMotionValueEvent(scrollYProgress, "change", (v) => {
     setIsActive(v > 0.3);
@@ -90,8 +89,6 @@ function TimelineStep({ item, index, total }: { item: typeof researchJourney[0];
   const Icon = item.icon;
   const isLeft = index % 2 === 0;
 
-  // Mobile: single column, all content on right
-  // Desktop: zigzag left/right
   return (
     <div ref={ref} className="relative">
       {/* MOBILE layout */}
@@ -108,14 +105,6 @@ function TimelineStep({ item, index, total }: { item: typeof researchJourney[0];
           >
             <Icon className={`w-5 h-5 transition-colors duration-500 ${isActive ? "text-primary-foreground" : "text-muted-foreground"}`} />
           </motion.div>
-          {index < total - 1 && (
-            <div className="relative w-0.5 flex-1 bg-border -mt-px">
-              <motion.div
-                className="absolute inset-0 origin-top bg-primary"
-                style={{ scaleY: lineScaleY }}
-              />
-            </div>
-          )}
         </div>
         <motion.div
           initial={{ opacity: 0, x: 30 }}
@@ -171,8 +160,8 @@ function TimelineStep({ item, index, total }: { item: typeof researchJourney[0];
           )}
         </div>
 
-        {/* Center timeline */}
-        <div className="flex flex-col items-center">
+        {/* Center dot only — line is in parent */}
+        <div className="flex justify-center">
           <motion.div
             initial={{ scale: 0 }}
             whileInView={{ scale: 1 }}
@@ -184,14 +173,6 @@ function TimelineStep({ item, index, total }: { item: typeof researchJourney[0];
           >
             <Icon className={`w-6 h-6 transition-colors duration-500 ${isActive ? "text-primary-foreground" : "text-muted-foreground"}`} />
           </motion.div>
-          {index < total - 1 && (
-            <div className="relative w-0.5 flex-1 bg-border -mt-px">
-              <motion.div
-                className="absolute inset-0 origin-top bg-primary"
-                style={{ scaleY: lineScaleY }}
-              />
-            </div>
-          )}
         </div>
 
         {/* Right content */}
