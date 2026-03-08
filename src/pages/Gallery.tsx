@@ -26,6 +26,9 @@ const galleryItems = [
 const categories = ["All", "Products", "Research", "Sourcing", "Logistics"];
 
 const Gallery = () => {
+  const heroRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
+  const heroImgY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
   const [activeCategory, setActiveCategory] = useState("All");
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
