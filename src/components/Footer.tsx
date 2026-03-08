@@ -36,8 +36,8 @@ const Footer = () => (
       </nav>
 
       <div>
-        <h4 className="font-bold mb-6 uppercase tracking-wider text-sm text-white">Locations</h4>
-        <ul className="space-y-4 text-[hsl(40,10%,50%)] text-sm font-body">
+        <h3 className="font-bold mb-6 uppercase tracking-wider text-sm text-white">Locations</h3>
+        <ul className="space-y-4 text-[hsl(40,10%,60%)] text-sm font-body">
           <li>Headquarters: Boynton Beach, FL</li>
           <li>Warehouse: Norcross, GA</li>
           <li>Manufacturing: Oklahoma City, OK</li>
