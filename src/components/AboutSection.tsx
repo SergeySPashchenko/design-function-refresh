@@ -25,6 +25,10 @@ const AboutSection = () => {
                 src={`${import.meta.env.BASE_URL}assets/bottle.webp`}
                 alt="Scientist researching natural extracts"
                 loading="lazy"
+                decoding="async"
+                width="730"
+                height="500"
+                sizes="(max-width: 768px) 100vw, 50vw"
                 className="w-full h-[500px] object-cover transition-transform duration-700 group-hover:scale-105"
               />
             </div>

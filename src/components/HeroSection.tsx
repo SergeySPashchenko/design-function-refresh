@@ -13,6 +13,10 @@ const HeroSection = () => {
         <img
           src={`${import.meta.env.BASE_URL}assets/hero-main.jpg`}
           alt="Natural supplements and herbs"
+          decoding="async"
+          fetchPriority="high"
+          width="1920"
+          height="1080"
           className="w-full h-full object-cover scale-[1.15]"
         />
         {/* Multi-layer overlay for guaranteed readability */}
