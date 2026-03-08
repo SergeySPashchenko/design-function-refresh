@@ -229,9 +229,9 @@ const Process = () => {
           <p className="text-primary-foreground/70 text-lg mb-10 font-body max-w-lg mx-auto">
             Explore our ingredients and research methodology in detail.
           </p>
-          <a href="/experience" className="inline-flex px-10 py-5 bg-background text-foreground font-body font-semibold text-sm uppercase tracking-wider rounded-full hover:bg-background/90 transition-all duration-300 hover:scale-105">
+          <Link to="/experience" className="inline-flex px-10 py-5 bg-background text-foreground font-body font-semibold text-sm uppercase tracking-wider rounded-full hover:bg-background/90 transition-all duration-300 hover:scale-105">
             Explore Experience
-          </a>
+          </Link>
         </div>
       </section>
 
