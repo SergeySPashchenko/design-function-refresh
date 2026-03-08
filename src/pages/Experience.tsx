@@ -1,10 +1,8 @@
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef, lazy, Suspense } from "react";
-import { Beaker, Leaf, Brain, Heart, Shield, Zap, FlaskConical, Microscope } from "lucide-react";
+import { useRef } from "react";
+import { Beaker, Leaf, Brain, Heart, Shield, Zap, FlaskConical, Microscope, Sprout, Dna, Atom } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-
-const Scene = lazy(() => import("@/components/three/Scene"));
 
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
