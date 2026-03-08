@@ -37,6 +37,7 @@ const team = [
 ];
 
 const About = () => {
+  useSEO({ title: "About IDINGO — Science-Backed Supplements", description: "Learn about IDINGO's mission, values, and team. We build supplements backed by real science and full transparency." });
   const heroRef = useRef<HTMLElement>(null);
   const timelineRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress: heroProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
