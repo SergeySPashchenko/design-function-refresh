@@ -108,10 +108,14 @@ const About = () => {
           </motion.div>
 
           <div ref={timelineRef} className="relative max-w-4xl mx-auto">
-            {/* Progress line */}
-            <div className="absolute left-6 md:left-1/2 top-0 bottom-0 w-0.5 bg-border md:-translate-x-px">
+            {/* Continuous line — mobile */}
+            <div className="md:hidden absolute left-[23px] top-0 bottom-0 w-0.5 bg-border" />
+            {/* Continuous line — desktop */}
+            <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-border -translate-x-px">
               <motion.div className="absolute top-0 left-0 w-full bg-primary origin-top" style={{ height: lineHeight }} />
             </div>
+
+            <div className="flex flex-col gap-8 md:gap-12">
 
             {milestones.map((m, i) => {
               const Icon = m.icon;
