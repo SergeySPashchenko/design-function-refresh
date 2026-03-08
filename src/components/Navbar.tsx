@@ -71,7 +71,7 @@ const Navbar = () => {
               <li key={link.href}>
                 <Link
                   to={link.href}
-                  className={`font-body text-sm font-medium tracking-wide uppercase transition-colors hover:text-primary ${scrolled || !isHome ? "text-foreground" : "text-primary-foreground/80"
+                  className={`font-body text-sm font-medium tracking-wide uppercase transition-colors hover:text-primary ${scrolled || !isHome ? "text-foreground" : "text-hero-text/80"
                     }`}
                 >
                   {link.label}
