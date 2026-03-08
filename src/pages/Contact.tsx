@@ -41,6 +41,7 @@ const locations = [
 ];
 
 const Contact = () => {
+  useSEO({ title: "Contact IDINGO — Get in Touch", description: "Have a question about IDINGO supplements? Reach out to our team. We respond within 24 hours." });
   const { toast } = useToast();
   const heroRef = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });

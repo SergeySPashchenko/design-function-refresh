@@ -47,6 +47,7 @@ const positionOptions = [
 ];
 
 const Career = () => {
+  useSEO({ title: "Careers at IDINGO — Join Our Team", description: "Build the future of wellness. Explore open positions at IDINGO and join a team of scientists, engineers, and creatives." });
   const { toast } = useToast();
   const heroRef = useRef<HTMLElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);

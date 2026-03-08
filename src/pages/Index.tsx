@@ -14,6 +14,7 @@ import { AnimatePresence } from "framer-motion";
 import { useSEO } from "@/hooks/useSEO";
 
 const Index = () => {
+  useSEO({ title: "IDINGO — Science-Backed Natural Supplements", description: "Pure, organic, science-backed supplements designed for optimal health. Trusted by thousands worldwide. Est. 2008." });
   const [loading, setLoading] = useState(true);
 
   return (
