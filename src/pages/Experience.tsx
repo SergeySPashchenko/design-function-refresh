@@ -80,6 +80,7 @@ function TimelineStep({ item, index, total }: { item: typeof researchJourney[0];
     offset: ["start 0.85", "start 0.3"],
   });
   const [isActive, setIsActive] = useState(false);
+  const lineScaleY = useTransform(scrollYProgress, [0, 1], [0, 1]);
 
   useMotionValueEvent(scrollYProgress, "change", (v) => {
     setIsActive(v > 0.3);
@@ -88,90 +89,136 @@ function TimelineStep({ item, index, total }: { item: typeof researchJourney[0];
   const Icon = item.icon;
   const isLeft = index % 2 === 0;
 
+  // Mobile: single column, all content on right
+  // Desktop: zigzag left/right
   return (
-    <div ref={ref} className="relative grid grid-cols-[1fr_60px_1fr] md:grid-cols-[1fr_80px_1fr] items-start">
-      {/* Left content */}
-      <div className={isLeft ? "pr-4 md:pr-8" : ""}>
-        {isLeft && (
+    <div ref={ref} className="relative">
+      {/* MOBILE layout */}
+      <div className="md:hidden grid grid-cols-[48px_1fr] items-start gap-4">
+        <div className="flex flex-col items-center">
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ scale: 0 }}
+            whileInView={{ scale: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.7, delay: 0.1 }}
-            className="text-right"
+            transition={{ duration: 0.4, delay: 0.2 }}
+            className={`relative z-10 w-11 h-11 rounded-full flex items-center justify-center transition-all duration-500 ${
+              isActive ? "bg-primary shadow-lg shadow-primary/30" : "bg-card border-2 border-border"
+            }`}
           >
-            <span className="font-display text-5xl md:text-6xl font-bold text-primary/10">{item.step}</span>
-            <h3 className="font-display text-xl md:text-2xl font-bold text-foreground -mt-2 mb-3">{item.title}</h3>
-            <p className="text-muted-foreground font-body leading-relaxed mb-3 text-sm md:text-base">{item.desc}</p>
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={isActive ? { opacity: 1, height: "auto" } : { opacity: 0, height: 0 }}
-              transition={{ duration: 0.4 }}
-              className="overflow-hidden"
-            >
-              <div className="flex items-start gap-2 p-3 rounded-xl bg-primary/5 border border-primary/10 justify-end">
-                <p className="text-sm text-muted-foreground font-body">{item.detail}</p>
-                <ArrowRight className="w-4 h-4 text-primary mt-0.5 shrink-0 rotate-180" />
-              </div>
-            </motion.div>
+            <Icon className={`w-5 h-5 transition-colors duration-500 ${isActive ? "text-primary-foreground" : "text-muted-foreground"}`} />
           </motion.div>
-        )}
-      </div>
-
-      {/* Center timeline */}
-      <div className="flex flex-col items-center">
+          {index < total - 1 && (
+            <div className="relative w-0.5 flex-1 min-h-[40px] bg-border">
+              <motion.div
+                className="absolute inset-0 origin-top bg-primary"
+                style={{ scaleY: lineScaleY }}
+              />
+            </div>
+          )}
+        </div>
         <motion.div
-          initial={{ scale: 0 }}
-          whileInView={{ scale: 1 }}
+          initial={{ opacity: 0, x: 30 }}
+          whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.4, delay: 0.2 }}
-          className={`relative z-10 w-12 h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center transition-all duration-500 ${
-            isActive
-              ? "bg-primary shadow-lg shadow-primary/30"
-              : "bg-card border-2 border-border"
-          }`}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="pb-8"
         >
-          <Icon className={`w-5 h-5 md:w-6 md:h-6 transition-colors duration-500 ${isActive ? "text-primary-foreground" : "text-muted-foreground"}`} />
-        </motion.div>
-        {index < total - 1 && (
+          <span className="font-display text-3xl font-bold text-primary/15">{item.step}</span>
+          <h3 className="font-display text-lg font-bold text-foreground -mt-1 mb-2">{item.title}</h3>
+          <p className="text-muted-foreground font-body leading-relaxed mb-3 text-sm">{item.desc}</p>
           <motion.div
-            className="w-0.5 flex-1 min-h-[80px] origin-top"
-            style={{
-              background: `linear-gradient(to bottom, hsl(var(--primary)), hsl(var(--border)))`,
-            }}
-            initial={{ scaleY: 0 }}
-            whileInView={{ scaleY: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-          />
-        )}
+            initial={{ opacity: 0, height: 0 }}
+            animate={isActive ? { opacity: 1, height: "auto" } : { opacity: 0, height: 0 }}
+            transition={{ duration: 0.4 }}
+            className="overflow-hidden"
+          >
+            <div className="flex items-start gap-2 p-3 rounded-xl bg-primary/5 border border-primary/10">
+              <ArrowRight className="w-4 h-4 text-primary mt-0.5 shrink-0" />
+              <p className="text-xs text-muted-foreground font-body">{item.detail}</p>
+            </div>
+          </motion.div>
+        </motion.div>
       </div>
 
-      {/* Right content */}
-      <div className={!isLeft ? "pl-4 md:pl-8" : ""}>
-        {!isLeft && (
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, delay: 0.1 }}
-          >
-            <span className="font-display text-5xl md:text-6xl font-bold text-primary/10">{item.step}</span>
-            <h3 className="font-display text-xl md:text-2xl font-bold text-foreground -mt-2 mb-3">{item.title}</h3>
-            <p className="text-muted-foreground font-body leading-relaxed mb-3 text-sm md:text-base">{item.desc}</p>
+      {/* DESKTOP layout */}
+      <div className="hidden md:grid grid-cols-[1fr_80px_1fr] items-start">
+        {/* Left content */}
+        <div className={isLeft ? "pr-8" : ""}>
+          {isLeft && (
             <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={isActive ? { opacity: 1, height: "auto" } : { opacity: 0, height: 0 }}
-              transition={{ duration: 0.4 }}
-              className="overflow-hidden"
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, delay: 0.1 }}
+              className="text-right"
             >
-              <div className="flex items-start gap-2 p-3 rounded-xl bg-primary/5 border border-primary/10">
-                <ArrowRight className="w-4 h-4 text-primary mt-0.5 shrink-0" />
-                <p className="text-sm text-muted-foreground font-body">{item.detail}</p>
-              </div>
+              <span className="font-display text-6xl font-bold text-primary/10">{item.step}</span>
+              <h3 className="font-display text-2xl font-bold text-foreground -mt-2 mb-3">{item.title}</h3>
+              <p className="text-muted-foreground font-body leading-relaxed mb-3">{item.desc}</p>
+              <motion.div
+                initial={{ opacity: 0, height: 0 }}
+                animate={isActive ? { opacity: 1, height: "auto" } : { opacity: 0, height: 0 }}
+                transition={{ duration: 0.4 }}
+                className="overflow-hidden"
+              >
+                <div className="flex items-start gap-2 p-3 rounded-xl bg-primary/5 border border-primary/10 justify-end">
+                  <p className="text-sm text-muted-foreground font-body">{item.detail}</p>
+                  <ArrowRight className="w-4 h-4 text-primary mt-0.5 shrink-0 rotate-180" />
+                </div>
+              </motion.div>
             </motion.div>
+          )}
+        </div>
+
+        {/* Center timeline */}
+        <div className="flex flex-col items-center">
+          <motion.div
+            initial={{ scale: 0 }}
+            whileInView={{ scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4, delay: 0.2 }}
+            className={`relative z-10 w-14 h-14 rounded-full flex items-center justify-center transition-all duration-500 ${
+              isActive ? "bg-primary shadow-lg shadow-primary/30" : "bg-card border-2 border-border"
+            }`}
+          >
+            <Icon className={`w-6 h-6 transition-colors duration-500 ${isActive ? "text-primary-foreground" : "text-muted-foreground"}`} />
           </motion.div>
-        )}
+          {index < total - 1 && (
+            <div className="relative w-0.5 flex-1 min-h-[80px] bg-border">
+              <motion.div
+                className="absolute inset-0 origin-top bg-primary"
+                style={{ scaleY: lineScaleY }}
+              />
+            </div>
+          )}
+        </div>
+
+        {/* Right content */}
+        <div className={!isLeft ? "pl-8" : ""}>
+          {!isLeft && (
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, delay: 0.1 }}
+            >
+              <span className="font-display text-6xl font-bold text-primary/10">{item.step}</span>
+              <h3 className="font-display text-2xl font-bold text-foreground -mt-2 mb-3">{item.title}</h3>
+              <p className="text-muted-foreground font-body leading-relaxed mb-3">{item.desc}</p>
+              <motion.div
+                initial={{ opacity: 0, height: 0 }}
+                animate={isActive ? { opacity: 1, height: "auto" } : { opacity: 0, height: 0 }}
+                transition={{ duration: 0.4 }}
+                className="overflow-hidden"
+              >
+                <div className="flex items-start gap-2 p-3 rounded-xl bg-primary/5 border border-primary/10">
+                  <ArrowRight className="w-4 h-4 text-primary mt-0.5 shrink-0" />
+                  <p className="text-sm text-muted-foreground font-body">{item.detail}</p>
+                </div>
+              </motion.div>
+            </motion.div>
+          )}
+        </div>
       </div>
     </div>
   );
