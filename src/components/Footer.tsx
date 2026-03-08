@@ -1,13 +1,38 @@
+import { Link } from "react-router-dom";
+
+const navLinks = [
+  { label: "Home", href: "/" },
+  { label: "About", href: "/about" },
+  { label: "Experience", href: "/experience" },
+  { label: "Process", href: "/process" },
+  { label: "Gallery", href: "/gallery" },
+  { label: "Career", href: "/career" },
+  { label: "Contact", href: "/contact" },
+];
+
 const Footer = () => (
   <footer className="py-16 bg-foreground text-background">
-    <div className="container mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+    <div className="container mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
       <div>
-        <h3 className="font-display text-2xl font-bold mb-6">
+        <Link to="/" className="font-display text-2xl font-bold mb-6 inline-block">
           IDINGO<span className="text-primary">.</span>
-        </h3>
+        </Link>
         <p className="text-background/60 leading-relaxed max-w-sm">
           Optimize Health Naturally. We are your #1 health advocate, providing science-backed natural supplements.
         </p>
+      </div>
+
+      <div>
+        <h4 className="font-bold mb-6 uppercase tracking-wider text-sm">Navigation</h4>
+        <ul className="space-y-3 text-background/60 text-sm">
+          {navLinks.map((link) => (
+            <li key={link.href}>
+              <Link to={link.href} className="hover:text-primary transition-colors">
+                {link.label}
+              </Link>
+            </li>
+          ))}
+        </ul>
       </div>
 
       <div>
@@ -37,8 +62,8 @@ const Footer = () => (
         © {new Date().getFullYear()} Idingo LLC. All rights reserved.
       </p>
       <div className="flex gap-6 text-xs text-background/40">
-        <a href="#" className="hover:text-primary transition-colors">Privacy Policy</a>
-        <a href="#" className="hover:text-primary transition-colors">Terms of Service</a>
+        <Link to="/contact" className="hover:text-primary transition-colors">Privacy Policy</Link>
+        <Link to="/contact" className="hover:text-primary transition-colors">Terms of Service</Link>
       </div>
     </div>
   </footer>
