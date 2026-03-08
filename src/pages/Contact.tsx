@@ -164,7 +164,7 @@ const Contact = () => {
                   required
                   className="w-full px-5 py-4 bg-card border border-border rounded-xl font-body text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/30 transition-all duration-300 resize-none hover:border-primary/30"
                 />
-              />
+              </div>
               <button
                 type="submit"
                 className="group inline-flex items-center justify-center gap-2 w-full sm:w-auto px-10 py-4 bg-primary text-primary-foreground font-body font-semibold text-sm uppercase tracking-wider rounded-full hover:bg-accent transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/20"
