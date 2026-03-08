@@ -11,7 +11,7 @@ const navLinks = [
 ];
 
 const Footer = () => (
-  <footer className="py-16 bg-[hsl(30,10%,6%)] text-[hsl(40,20%,85%)]">
+  <footer className="py-16 bg-[hsl(30,10%,6%)] text-[hsl(40,20%,90%)]">
     <div className="container mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
       <div>
         <Link to="/" className="font-display text-2xl font-bold mb-6 inline-block text-white">
