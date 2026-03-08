@@ -1,6 +1,8 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { Beaker, Leaf, PackageCheck, ShieldCheck, Truck, FlaskConical, Check, X as XIcon } from "lucide-react";
+import { Link } from "react-router-dom";
+import { useSEO } from "@/hooks/useSEO";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import processHero from "@/assets/process-hero.jpg";
