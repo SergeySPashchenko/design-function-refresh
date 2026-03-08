@@ -58,7 +58,7 @@ const Navbar = () => {
     >
       <div className="container mx-auto flex items-center justify-between py-4 px-6">
         <Link to="/" className="font-display text-2xl font-bold tracking-tight">
-          <span className={scrolled || !isHome ? "text-foreground" : "text-hero-text"}>
+          <span className={scrolled || !isHome ? "text-foreground" : "text-white"}>
             IDINGO
           </span>
           <span className="text-primary">.</span>
@@ -71,7 +71,7 @@ const Navbar = () => {
               <li key={link.href}>
                 <Link
                   to={link.href}
-                  className={`font-body text-sm font-medium tracking-wide uppercase transition-colors hover:text-primary ${scrolled || !isHome ? "text-foreground" : "text-hero-text/80"
+                  className={`font-body text-sm font-medium tracking-wide uppercase transition-colors hover:text-primary ${scrolled || !isHome ? "text-foreground" : "text-white/80"
                     }`}
                 >
                   {link.label}
@@ -86,7 +86,7 @@ const Navbar = () => {
             className={`relative w-10 h-10 rounded-full flex items-center justify-center transition-colors duration-300 ${
               scrolled || !isHome
                 ? "text-foreground hover:bg-muted"
-                : "text-hero-text/80 hover:bg-hero-text/10"
+                : "text-white/80 hover:bg-white/10"
             }`}
           >
             <AnimatePresence mode="wait">
@@ -120,13 +120,13 @@ const Navbar = () => {
           <button
             onClick={toggleTheme}
             aria-label="Toggle dark mode"
-            className={scrolled || !isHome ? "text-foreground" : "text-hero-text"}
+            className={scrolled || !isHome ? "text-foreground" : "text-white"}
           >
             {dark ? <Sun size={20} /> : <Moon size={20} />}
           </button>
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className={scrolled || !isHome ? "text-foreground" : "text-hero-text"}
+            className={scrolled || !isHome ? "text-foreground" : "text-white"}
           >
             {mobileOpen ? <X size={24} /> : <Menu size={24} />}
           </button>

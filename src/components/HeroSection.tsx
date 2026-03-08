@@ -5,8 +5,14 @@ const HeroSection = () => {
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0">
-        <img src={`${import.meta.env.BASE_URL}assets/lab.png`} alt="Natural supplements and herbs" className="w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-hero-overlay/60" />
+        <img
+          src={`${import.meta.env.BASE_URL}assets/lab.png`}
+          alt="Natural supplements and herbs"
+          className="w-full h-full object-cover"
+        />
+        {/* Multi-layer overlay for guaranteed readability */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/80" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-transparent to-black/40" />
       </div>
 
       <div className="relative z-10 container mx-auto px-6 text-center">
@@ -14,7 +20,7 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3, duration: 0.8 }}
-          className="font-body text-sm tracking-[0.3em] uppercase text-hero-text/70 mb-6"
+          className="font-body text-sm tracking-[0.3em] uppercase text-white/60 mb-6"
         >
           Nice to meet you · Est. 2008
         </motion.p>
@@ -23,7 +29,7 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5, duration: 0.8 }}
-          className="font-display text-5xl md:text-7xl lg:text-8xl font-bold text-hero-text leading-[1.05] mb-8"
+          className="font-display text-5xl md:text-7xl lg:text-8xl font-bold text-white leading-[1.05] mb-8 drop-shadow-[0_2px_20px_rgba(0,0,0,0.4)]"
         >
           We Make Wellness
           <br />
@@ -35,7 +41,7 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.7, duration: 0.8 }}
-          className="font-body text-lg md:text-xl text-hero-text/70 max-w-xl mx-auto mb-10"
+          className="font-body text-lg md:text-xl text-white/70 max-w-xl mx-auto mb-10"
         >
           Pure, organic, science-backed supplements — designed with you in mind. Because your health deserves better than generic.
         </motion.p>
@@ -61,7 +67,7 @@ const HeroSection = () => {
           </a>
           <a
             href="#contact"
-            className="inline-flex items-center justify-center px-8 py-4 border border-hero-text/30 text-hero-text font-body font-semibold text-sm uppercase tracking-wider rounded-full hover:bg-hero-text/10 transition-all duration-300 hover:border-hero-text/60"
+            className="inline-flex items-center justify-center px-8 py-4 border border-white/30 text-white font-body font-semibold text-sm uppercase tracking-wider rounded-full hover:bg-white/10 transition-all duration-300 hover:border-white/60"
           >
             Say Hello
           </a>
@@ -78,9 +84,9 @@ const HeroSection = () => {
         <motion.div
           animate={{ y: [0, 8, 0] }}
           transition={{ repeat: Infinity, duration: 2 }}
-          className="w-5 h-8 border-2 border-hero-text/40 rounded-full flex justify-center pt-1"
+          className="w-5 h-8 border-2 border-white/40 rounded-full flex justify-center pt-1"
         >
-          <div className="w-1 h-2 bg-hero-text/60 rounded-full" />
+          <div className="w-1 h-2 bg-white/60 rounded-full" />
         </motion.div>
       </motion.div>
     </section>
