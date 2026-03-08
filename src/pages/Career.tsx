@@ -3,6 +3,7 @@ import { useState, useRef } from "react";
 import { Briefcase, Heart, TrendingUp, Users, Leaf, FlaskConical, Truck, Megaphone, Code, ChevronRight, Upload, Send, FileText, X } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useToast } from "@/hooks/use-toast";
+import { useSEO } from "@/hooks/useSEO";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import careerHero from "@/assets/career-hero.jpg";
@@ -46,6 +47,7 @@ const positionOptions = [
 ];
 
 const Career = () => {
+  useSEO({ title: "Careers at IDINGO — Join Our Team", description: "Build the future of wellness. Explore open positions at IDINGO and join a team of scientists, engineers, and creatives." });
   const { toast } = useToast();
   const heroRef = useRef<HTMLElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);

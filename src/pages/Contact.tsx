@@ -2,6 +2,7 @@ import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion"
 import { useState, useRef } from "react";
 import { Send, Mail, MapPin, Clock, ChevronDown, Instagram, Twitter, Linkedin, Youtube } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { useSEO } from "@/hooks/useSEO";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import contactHero from "@/assets/contact-hero.jpg";
@@ -40,6 +41,7 @@ const locations = [
 ];
 
 const Contact = () => {
+  useSEO({ title: "Contact IDINGO — Get in Touch", description: "Have a question about IDINGO supplements? Reach out to our team. We respond within 24 hours." });
   const { toast } = useToast();
   const heroRef = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
