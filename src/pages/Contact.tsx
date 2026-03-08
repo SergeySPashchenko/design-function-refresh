@@ -61,7 +61,7 @@ const Contact = () => {
       <main id="main-content" tabIndex={-1} className="outline-none">
 
       {/* HERO */}
-      <section ref={heroRef} className="relative min-h-[70vh] flex items-center overflow-hidden">
+      <section ref={heroRef} className="relative min-h-screen flex items-center overflow-hidden">
         <motion.div className="absolute inset-0 z-0" style={{ y: heroImgY }}>
           <img src={contactHero} alt="Get in touch with IDINGO" className="w-full h-full object-cover scale-[1.15]" />
         </motion.div>
