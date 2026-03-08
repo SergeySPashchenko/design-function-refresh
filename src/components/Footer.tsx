@@ -17,7 +17,7 @@ const Footer = () => (
         <Link to="/" className="font-display text-2xl font-bold mb-6 inline-block text-white">
           IDINGO<span className="text-primary">.</span>
         </Link>
-        <p className="text-[hsl(40,10%,50%)] leading-relaxed max-w-sm font-body text-sm">
+        <p className="text-[hsl(40,10%,60%)] leading-relaxed max-w-sm font-body text-sm">
           Optimize Health Naturally. We are your #1 health advocate, providing science-backed natural supplements.
         </p>
       </div>
