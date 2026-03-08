@@ -143,12 +143,16 @@ const Gallery = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
+            role="dialog"
+            aria-modal="true"
+            aria-label={`Image: ${filtered[lightboxIndex!]?.title}`}
             className="fixed inset-0 z-[100] bg-black/90 backdrop-blur-sm flex items-center justify-center p-4 md:p-12"
             onClick={closeLightbox}
           >
             {/* Close */}
             <button
               onClick={closeLightbox}
+              aria-label="Close lightbox"
               className="absolute top-6 right-6 w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors z-10"
             >
               <X className="w-5 h-5 text-white" />
