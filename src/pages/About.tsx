@@ -1,6 +1,7 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { FlaskConical, Leaf, ShieldCheck, Heart, Users, Target, Rocket, Award, Globe, TrendingUp } from "lucide-react";
+import { useSEO } from "@/hooks/useSEO";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import StatsSection from "@/components/StatsSection";
