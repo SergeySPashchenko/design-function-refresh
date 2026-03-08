@@ -22,8 +22,9 @@ const AboutSection = () => {
           >
             <div className="overflow-hidden rounded-2xl">
               <img
-                src={`${import.meta.env.BASE_URL}assets/bottle.png`}
+                src={`${import.meta.env.BASE_URL}assets/bottle.webp`}
                 alt="Scientist researching natural extracts"
+                loading="lazy"
                 className="w-full h-[500px] object-cover transition-transform duration-700 group-hover:scale-105"
               />
             </div>
