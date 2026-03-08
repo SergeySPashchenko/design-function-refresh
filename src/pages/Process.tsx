@@ -40,6 +40,7 @@ const comparisonRows = [
 ];
 
 const Process = () => {
+  useSEO({ title: "Our Process — IDINGO Quality Standards", description: "Discover IDINGO's rigorous 6-step production process, from sourcing to delivery, with GMP certification and third-party testing." });
   const heroRef = useRef<HTMLElement>(null);
   const timelineRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress: heroProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
