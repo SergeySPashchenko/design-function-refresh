@@ -109,7 +109,7 @@ function TimelineStep({ item, index, total }: { item: typeof researchJourney[0];
             <Icon className={`w-5 h-5 transition-colors duration-500 ${isActive ? "text-primary-foreground" : "text-muted-foreground"}`} />
           </motion.div>
           {index < total - 1 && (
-            <div className="relative w-0.5 flex-1 min-h-[40px] bg-border">
+            <div className="relative w-0.5 flex-1 bg-border -mt-px">
               <motion.div
                 className="absolute inset-0 origin-top bg-primary"
                 style={{ scaleY: lineScaleY }}
