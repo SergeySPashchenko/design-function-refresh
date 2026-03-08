@@ -22,7 +22,7 @@ const Preloader = ({ onComplete }: { onComplete: () => void }) => {
     <motion.div
       exit={{ opacity: 0, scale: 1.05 }}
       transition={{ duration: 0.6, ease: "easeInOut" }}
-      className="fixed inset-0 z-[100] bg-foreground flex flex-col items-center justify-center"
+      className="fixed inset-0 z-[100] bg-[hsl(30,10%,8%)] flex flex-col items-center justify-center"
     >
       <motion.div
         initial={{ opacity: 0, scale: 0.8 }}
