@@ -2,11 +2,12 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { motion } from "framer-motion";
 
+const base = import.meta.env.BASE_URL;
 const images = [
-      "/design-function-refresh/assets/bottle.png",
-      "/design-function-refresh/assets/lab.png",
-      "/design-function-refresh/assets/herbs.png",
-      "/design-function-refresh/assets/warehouse.png",
+      `${base}assets/bottle.png`,
+      `${base}assets/lab.png`,
+      `${base}assets/herbs.png`,
+      `${base}assets/warehouse.png`,
 ];
 
 const Gallery = () => {
