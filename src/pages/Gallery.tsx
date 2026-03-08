@@ -162,6 +162,7 @@ const Gallery = () => {
             {lightboxIndex > 0 && (
               <button
                 onClick={(e) => { e.stopPropagation(); navigateLightbox(-1); }}
+                aria-label="Previous image"
                 className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors z-10"
               >
                 <ChevronLeft className="w-6 h-6 text-white" />
