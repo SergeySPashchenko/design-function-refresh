@@ -120,8 +120,8 @@ const TestimonialsSection = () => {
                   setCurrent(i);
                 }}
                 aria-label={`Go to testimonial ${i + 1}`}
-                className={`w-2 h-2 rounded-full transition-all ${
-                  i === current ? "bg-primary w-6" : "bg-border"
+                className={`w-3 h-3 rounded-full transition-all p-0 min-w-[12px] min-h-[12px] ${
+                  i === current ? "bg-primary w-6" : "bg-muted-foreground/40"
                 }`}
               />
             ))}
