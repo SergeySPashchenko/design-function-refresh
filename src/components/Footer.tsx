@@ -45,8 +45,8 @@ const Footer = () => (
       </div>
 
       <div>
-        <h4 className="font-bold mb-6 uppercase tracking-wider text-sm text-white">Newsletter</h4>
-        <p className="text-sm text-[hsl(40,10%,50%)] mb-4 font-body">Stay In Touch. Sign Up to get the latest updates.</p>
+        <h3 className="font-bold mb-6 uppercase tracking-wider text-sm text-white">Newsletter</h3>
+        <p className="text-sm text-[hsl(40,10%,60%)] mb-4 font-body">Stay In Touch. Sign Up to get the latest updates.</p>
         <div className="flex gap-2">
           <input
             type="email"
