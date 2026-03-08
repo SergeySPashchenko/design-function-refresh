@@ -1,10 +1,8 @@
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef, lazy, Suspense } from "react";
-import { Beaker, Leaf, Brain, Heart, Shield, Zap, FlaskConical, Microscope } from "lucide-react";
+import { useRef } from "react";
+import { Beaker, Leaf, Brain, Heart, Shield, Zap, FlaskConical, Microscope, Sprout, Dna, Atom } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-
-const Scene = lazy(() => import("@/components/three/Scene"));
 
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
@@ -44,12 +42,45 @@ export default function Experience() {
 
       {/* HERO */}
       <section className="relative min-h-screen flex items-center overflow-hidden">
-        <div className="absolute inset-0 z-0">
-          <Suspense fallback={<div className="w-full h-full bg-background" />}>
-            <Scene />
-          </Suspense>
+        {/* Animated botanical background */}
+        <div className="absolute inset-0 z-0 bg-gradient-to-br from-primary/10 via-background to-primary/5">
+          {/* Floating botanical elements */}
+          {[Leaf, Sprout, Dna, Atom, Leaf, Sprout].map((Icon, i) => (
+            <motion.div
+              key={i}
+              className="absolute text-primary/10"
+              initial={{ opacity: 0 }}
+              animate={{
+                opacity: [0.05, 0.15, 0.05],
+                y: [0, -30, 0],
+                rotate: [0, 10, -10, 0],
+              }}
+              transition={{
+                duration: 8 + i * 2,
+                repeat: Infinity,
+                delay: i * 1.5,
+              }}
+              style={{
+                left: `${10 + i * 15}%`,
+                top: `${20 + (i % 3) * 25}%`,
+              }}
+            >
+              <Icon className="w-16 h-16 md:w-24 md:h-24" />
+            </motion.div>
+          ))}
+          {/* Organic circles */}
+          <motion.div
+            className="absolute w-[500px] h-[500px] rounded-full border border-primary/10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+            animate={{ scale: [1, 1.1, 1], rotate: 360 }}
+            transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+          />
+          <motion.div
+            className="absolute w-[700px] h-[700px] rounded-full border border-primary/5 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+            animate={{ scale: [1.1, 1, 1.1], rotate: -360 }}
+            transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
+          />
         </div>
-        <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/70 to-background/30 z-10" />
+        <div className="absolute inset-0 bg-gradient-to-r from-background/90 via-background/60 to-background/40 z-10" />
         <div className="relative z-20 container mx-auto px-6 pt-24">
           <motion.p
             initial={{ opacity: 0, y: 20 }}
