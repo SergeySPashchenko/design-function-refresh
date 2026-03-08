@@ -264,11 +264,13 @@ export default function Experience() {
             </p>
           </motion.div>
 
-          <div className="max-w-5xl mx-auto relative">
+          <div ref={timelineRef} className="max-w-5xl mx-auto relative">
             {/* Continuous timeline line — mobile */}
             <div className="md:hidden absolute left-[23px] top-0 bottom-0 w-0.5 bg-border" />
             {/* Continuous timeline line — desktop */}
-            <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-border -translate-x-px" />
+            <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-border -translate-x-px">
+              <motion.div className="absolute top-0 left-0 w-full bg-primary origin-top" style={{ height: lineHeight }} />
+            </div>
 
             <div className="flex flex-col gap-8 md:gap-12">
               {researchJourney.map((item, i) => (
