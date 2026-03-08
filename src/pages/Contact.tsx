@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import { Send, Mail, MapPin, Clock, ChevronDown, Instagram, Twitter, Linkedin, Youtube } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
