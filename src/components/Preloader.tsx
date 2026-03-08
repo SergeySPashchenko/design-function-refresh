@@ -50,7 +50,7 @@ const Preloader = ({ onComplete }: { onComplete: () => void }) => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.3 }}
-        className="font-body text-[10px] tracking-widest uppercase text-primary-foreground/30 mt-4"
+        className="font-body text-[10px] tracking-widest uppercase text-[hsl(40,20%,92%)]/30 mt-4"
       >
         {Math.min(Math.round(progress), 100)}%
       </motion.p>
