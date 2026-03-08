@@ -11,6 +11,7 @@ import Contact from "./pages/Contact";
 import Experience from "./pages/Experience";
 import NotFound from "./pages/NotFound";
 
+const queryClient = new QueryClient();
 const basename = import.meta.env.BASE_URL || "/";
 
 const App = () => (
