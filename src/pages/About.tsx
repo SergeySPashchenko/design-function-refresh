@@ -108,10 +108,14 @@ const About = () => {
           </motion.div>
 
           <div ref={timelineRef} className="relative max-w-4xl mx-auto">
-            {/* Progress line */}
-            <div className="absolute left-6 md:left-1/2 top-0 bottom-0 w-0.5 bg-border md:-translate-x-px">
+            {/* Continuous line — mobile */}
+            <div className="md:hidden absolute left-[23px] top-0 bottom-0 w-0.5 bg-border" />
+            {/* Continuous line — desktop */}
+            <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-border -translate-x-px">
               <motion.div className="absolute top-0 left-0 w-full bg-primary origin-top" style={{ height: lineHeight }} />
             </div>
+
+            <div className="flex flex-col gap-8 md:gap-12">
 
             {milestones.map((m, i) => {
               const Icon = m.icon;
@@ -123,27 +127,52 @@ const About = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: 0.1 }}
-                  className={`relative flex items-start gap-8 mb-16 last:mb-0 ${isLeft ? "md:flex-row" : "md:flex-row-reverse"}`}
+                  className="relative"
                 >
-                  {/* Dot */}
-                  <motion.div
-                    whileHover={{ scale: 1.2 }}
-                    className="absolute left-6 md:left-1/2 w-12 h-12 -translate-x-1/2 z-10 rounded-full bg-background border-2 border-primary flex items-center justify-center transition-all duration-300 hover:bg-primary hover:shadow-lg hover:shadow-primary/30 group"
-                  >
-                    <Icon className="w-5 h-5 text-primary group-hover:text-primary-foreground transition-colors" />
-                  </motion.div>
-
-                  {/* Content */}
-                  <div className={`ml-16 md:ml-0 md:w-1/2 ${isLeft ? "md:pr-16 md:text-right" : "md:pl-16"}`}>
-                    <span className="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary font-body text-xs font-semibold tracking-wider mb-2">{m.year}</span>
-                    <h3 className="font-display text-xl font-semibold text-foreground mb-2">{m.title}</h3>
-                    <p className="font-body text-muted-foreground leading-relaxed text-sm">{m.desc}</p>
+                  {/* MOBILE layout */}
+                  <div className="md:hidden grid grid-cols-[48px_1fr] items-start gap-4">
+                    <div className="flex justify-center">
+                      <div className="relative z-10 w-12 h-12 rounded-full bg-background border-2 border-primary flex items-center justify-center shrink-0 hover:bg-primary hover:shadow-lg hover:shadow-primary/30 transition-all duration-300 group">
+                        <Icon className="w-5 h-5 text-primary group-hover:text-primary-foreground transition-colors" />
+                      </div>
+                    </div>
+                    <div className="pb-8">
+                      <span className="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary font-body text-xs font-semibold tracking-wider mb-2">{m.year}</span>
+                      <h3 className="font-display text-xl font-semibold text-foreground mb-2">{m.title}</h3>
+                      <p className="font-body text-muted-foreground leading-relaxed text-sm">{m.desc}</p>
+                    </div>
                   </div>
 
-                  <div className="hidden md:block md:w-1/2" />
+                  {/* DESKTOP layout */}
+                  <div className="hidden md:grid grid-cols-[1fr_80px_1fr] items-start">
+                    <div className={isLeft ? "pr-8 text-right" : ""}>
+                      {isLeft && (
+                        <>
+                          <span className="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary font-body text-xs font-semibold tracking-wider mb-2">{m.year}</span>
+                          <h3 className="font-display text-xl font-semibold text-foreground mb-2">{m.title}</h3>
+                          <p className="font-body text-muted-foreground leading-relaxed text-sm">{m.desc}</p>
+                        </>
+                      )}
+                    </div>
+                    <div className="flex justify-center">
+                      <div className="relative z-10 w-14 h-14 rounded-full bg-background border-2 border-primary flex items-center justify-center shrink-0 hover:bg-primary hover:shadow-lg hover:shadow-primary/30 transition-all duration-300 group">
+                        <Icon className="w-5 h-5 text-primary group-hover:text-primary-foreground transition-colors" />
+                      </div>
+                    </div>
+                    <div className={!isLeft ? "pl-8" : ""}>
+                      {!isLeft && (
+                        <>
+                          <span className="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary font-body text-xs font-semibold tracking-wider mb-2">{m.year}</span>
+                          <h3 className="font-display text-xl font-semibold text-foreground mb-2">{m.title}</h3>
+                          <p className="font-body text-muted-foreground leading-relaxed text-sm">{m.desc}</p>
+                        </>
+                      )}
+                    </div>
+                  </div>
                 </motion.div>
               );
             })}
+            </div>
           </div>
         </div>
       </section>
