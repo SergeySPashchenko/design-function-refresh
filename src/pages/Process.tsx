@@ -1,6 +1,6 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-import { Beaker, Leaf, PackageCheck, ShieldCheck, Truck, FlaskConical } from "lucide-react";
+import { Beaker, Leaf, PackageCheck, ShieldCheck, Truck, FlaskConical, Check, X as XIcon } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import processHero from "@/assets/process-hero.jpg";
@@ -24,6 +24,17 @@ const certifications = [
   { label: "ISO 22000", desc: "Food safety management systems" },
   { label: "Third-Party Tested", desc: "Independent laboratory verification" },
   { label: "FDA Registered", desc: "Compliant facility registration" },
+];
+
+const comparisonRows = [
+  { feature: "Clinically dosed ingredients", idingo: true, industry: false },
+  { feature: "Third-party lab testing every batch", idingo: true, industry: false },
+  { feature: "Full ingredient transparency (no proprietary blends)", idingo: true, industry: false },
+  { feature: "Bioavailability-enhanced formulations", idingo: true, industry: false },
+  { feature: "Published Certificates of Analysis", idingo: true, industry: false },
+  { feature: "GMP-certified manufacturing", idingo: true, industry: true },
+  { feature: "Money-back guarantee", idingo: true, industry: false },
+  { feature: "Peer-reviewed research backing", idingo: true, industry: false },
 ];
 
 const Process = () => {
@@ -72,7 +83,6 @@ const Process = () => {
           </motion.div>
 
           <div ref={timelineRef} className="relative max-w-4xl mx-auto">
-            {/* Progress line */}
             <div className="absolute left-6 md:left-1/2 top-0 bottom-0 w-0.5 bg-border md:-translate-x-px">
               <motion.div className="absolute top-0 left-0 w-full bg-primary origin-top" style={{ height: lineHeight }} />
             </div>
@@ -89,7 +99,6 @@ const Process = () => {
                   transition={{ duration: 0.6, delay: 0.15 * i }}
                   className={`relative flex items-start gap-8 mb-16 last:mb-0 ${isLeft ? "md:flex-row" : "md:flex-row-reverse"}`}
                 >
-                  {/* Dot */}
                   <motion.div
                     whileHover={{ scale: 1.3 }}
                     className="absolute left-6 md:left-1/2 w-12 h-12 -translate-x-1/2 z-10 rounded-full bg-card border-2 border-primary flex items-center justify-center transition-all duration-300 hover:bg-primary hover:shadow-lg hover:shadow-primary/30 group"
@@ -97,7 +106,6 @@ const Process = () => {
                     <Icon className="w-5 h-5 text-primary group-hover:text-primary-foreground transition-colors" />
                   </motion.div>
 
-                  {/* Content */}
                   <div className={`ml-16 md:ml-0 md:w-1/2 ${isLeft ? "md:pr-16 md:text-right" : "md:pl-16"}`}>
                     <span className="font-display text-5xl font-bold text-primary/15">{step.num}</span>
                     <h3 className="font-display text-2xl font-semibold text-foreground -mt-2 mb-3">{step.title}</h3>
@@ -112,8 +120,71 @@ const Process = () => {
         </div>
       </section>
 
-      {/* CERTIFICATIONS */}
+      {/* COMPARISON TABLE */}
       <section className="py-24 md:py-32 bg-card">
+        <div className="container mx-auto px-6">
+          <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="text-center mb-16">
+            <p className="font-body text-sm tracking-[0.2em] uppercase text-primary font-semibold mb-3">Why Choose Us</p>
+            <h2 className="font-display text-3xl md:text-5xl font-bold text-foreground">
+              IDINGO vs <span className="italic text-primary">Industry Standard</span>
+            </h2>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="max-w-3xl mx-auto overflow-hidden rounded-2xl border border-border"
+          >
+            {/* Header */}
+            <div className="grid grid-cols-[1fr_100px_100px] md:grid-cols-[1fr_140px_140px] bg-background">
+              <div className="p-4 md:p-5 font-body text-xs uppercase tracking-wider text-muted-foreground font-semibold">Feature</div>
+              <div className="p-4 md:p-5 text-center font-body text-xs uppercase tracking-wider text-primary font-semibold">IDINGO</div>
+              <div className="p-4 md:p-5 text-center font-body text-xs uppercase tracking-wider text-muted-foreground font-semibold">Standard</div>
+            </div>
+
+            {/* Rows */}
+            {comparisonRows.map((row, i) => (
+              <motion.div
+                key={row.feature}
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.05 }}
+                className={`grid grid-cols-[1fr_100px_100px] md:grid-cols-[1fr_140px_140px] ${i % 2 === 0 ? "bg-background" : "bg-card"} border-t border-border`}
+              >
+                <div className="p-4 md:p-5 font-body text-sm text-foreground">{row.feature}</div>
+                <div className="p-4 md:p-5 flex items-center justify-center">
+                  {row.idingo ? (
+                    <div className="w-7 h-7 rounded-full bg-primary/15 flex items-center justify-center">
+                      <Check className="w-4 h-4 text-primary" />
+                    </div>
+                  ) : (
+                    <div className="w-7 h-7 rounded-full bg-destructive/10 flex items-center justify-center">
+                      <XIcon className="w-4 h-4 text-destructive" />
+                    </div>
+                  )}
+                </div>
+                <div className="p-4 md:p-5 flex items-center justify-center">
+                  {row.industry ? (
+                    <div className="w-7 h-7 rounded-full bg-primary/15 flex items-center justify-center">
+                      <Check className="w-4 h-4 text-primary" />
+                    </div>
+                  ) : (
+                    <div className="w-7 h-7 rounded-full bg-destructive/10 flex items-center justify-center">
+                      <XIcon className="w-4 h-4 text-destructive" />
+                    </div>
+                  )}
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* CERTIFICATIONS */}
+      <section className="py-24 md:py-32">
         <div className="container mx-auto px-6">
           <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="text-center mb-16">
             <p className="font-body text-sm tracking-[0.2em] uppercase text-primary font-semibold mb-3">Quality Standards</p>
@@ -130,7 +201,7 @@ const Process = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="text-center p-6 rounded-2xl bg-background border border-border"
+                className="text-center p-6 rounded-2xl bg-card border border-border"
               >
                 <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
                   <ShieldCheck className="w-5 h-5 text-primary" />

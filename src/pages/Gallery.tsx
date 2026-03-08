@@ -1,4 +1,6 @@
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { useState } from "react";
+import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import galleryHero from "@/assets/gallery-hero.jpg";
@@ -9,14 +11,37 @@ const fadeUp = {
 };
 
 const base = import.meta.env.BASE_URL;
+
 const galleryItems = [
-  { src: `${base}assets/bottle.png`, title: "Product Line", category: "Products" },
-  { src: `${base}assets/lab.png`, title: "Laboratory Testing", category: "Research" },
-  { src: `${base}assets/herbs.png`, title: "Raw Ingredients", category: "Sourcing" },
-  { src: `${base}assets/warehouse.png`, title: "Distribution Center", category: "Logistics" },
+  { src: `${base}assets/bottle.png`, title: "Premium Capsule Line", category: "Products", desc: "Our flagship product packaging designed for maximum freshness." },
+  { src: `${base}assets/lab.png`, title: "Laboratory Testing", category: "Research", desc: "HPLC and mass spectrometry analysis in our partner labs." },
+  { src: `${base}assets/herbs.png`, title: "Raw Botanical Ingredients", category: "Sourcing", desc: "Sustainably sourced bioactive compounds before extraction." },
+  { src: `${base}assets/warehouse.png`, title: "Distribution Center", category: "Logistics", desc: "Climate-controlled storage ensuring product integrity." },
+  { src: `${base}assets/bottle.png`, title: "Quality Seal Process", category: "Products", desc: "Every jar sealed with tamper-evident packaging." },
+  { src: `${base}assets/lab.png`, title: "Purity Verification", category: "Research", desc: "Third-party certificates of analysis for every batch." },
+  { src: `${base}assets/herbs.png`, title: "Ingredient Selection", category: "Sourcing", desc: "Careful evaluation of bioavailability and potency." },
+  { src: `${base}assets/warehouse.png`, title: "Global Shipping", category: "Logistics", desc: "Fast fulfillment to 15+ countries worldwide." },
 ];
 
+const categories = ["All", "Products", "Research", "Sourcing", "Logistics"];
+
 const Gallery = () => {
+  const [activeCategory, setActiveCategory] = useState("All");
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+
+  const filtered = activeCategory === "All"
+    ? galleryItems
+    : galleryItems.filter((item) => item.category === activeCategory);
+
+  const openLightbox = (index: number) => setLightboxIndex(index);
+  const closeLightbox = () => setLightboxIndex(null);
+
+  const navigateLightbox = (dir: number) => {
+    if (lightboxIndex === null) return;
+    const next = lightboxIndex + dir;
+    if (next >= 0 && next < filtered.length) setLightboxIndex(next);
+  };
+
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
@@ -47,38 +72,124 @@ const Gallery = () => {
       {/* GALLERY GRID */}
       <section className="py-24 md:py-32">
         <div className="container mx-auto px-6">
-          <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="text-center mb-16">
+          <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="text-center mb-12">
             <p className="font-body text-sm tracking-[0.2em] uppercase text-primary font-semibold mb-3">Behind the Scenes</p>
             <h2 className="font-display text-3xl md:text-5xl font-bold text-foreground">
               Our <span className="italic text-primary">world</span>
             </h2>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
-            {galleryItems.map((item, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: i * 0.1 }}
-                className="group relative overflow-hidden rounded-2xl aspect-[4/3] border border-border"
+          {/* Category Filter */}
+          <div className="flex flex-wrap justify-center gap-3 mb-12">
+            {categories.map((cat) => (
+              <button
+                key={cat}
+                onClick={() => setActiveCategory(cat)}
+                className={`px-5 py-2.5 rounded-full font-body text-sm font-medium transition-all duration-300 ${
+                  activeCategory === cat
+                    ? "bg-primary text-primary-foreground shadow-lg shadow-primary/20"
+                    : "bg-card border border-border text-muted-foreground hover:text-foreground hover:border-primary/40"
+                }`}
               >
-                <img
-                  src={item.src}
-                  alt={item.title}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                <div className="absolute bottom-0 left-0 right-0 p-6 translate-y-full group-hover:translate-y-0 transition-transform duration-500">
-                  <span className="font-body text-xs tracking-[0.15em] uppercase text-primary font-semibold">{item.category}</span>
-                  <h3 className="font-display text-xl font-bold text-white mt-1">{item.title}</h3>
-                </div>
-              </motion.div>
+                {cat}
+              </button>
             ))}
           </div>
+
+          {/* Grid */}
+          <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+            <AnimatePresence mode="popLayout">
+              {filtered.map((item, i) => (
+                <motion.div
+                  key={item.title}
+                  layout
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.9 }}
+                  transition={{ duration: 0.4 }}
+                  onClick={() => openLightbox(i)}
+                  className="group relative overflow-hidden rounded-2xl aspect-[4/3] border border-border cursor-pointer"
+                >
+                  <img
+                    src={item.src}
+                    alt={item.title}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <div className="absolute bottom-0 left-0 right-0 p-5 translate-y-full group-hover:translate-y-0 transition-transform duration-500">
+                    <span className="font-body text-xs tracking-[0.15em] uppercase text-primary font-semibold">{item.category}</span>
+                    <h3 className="font-display text-lg font-bold text-white mt-1">{item.title}</h3>
+                    <p className="text-xs text-white/60 font-body mt-1">{item.desc}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </AnimatePresence>
+          </motion.div>
         </div>
       </section>
+
+      {/* LIGHTBOX */}
+      <AnimatePresence>
+        {lightboxIndex !== null && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[100] bg-black/90 backdrop-blur-sm flex items-center justify-center p-4 md:p-12"
+            onClick={closeLightbox}
+          >
+            {/* Close */}
+            <button
+              onClick={closeLightbox}
+              className="absolute top-6 right-6 w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors z-10"
+            >
+              <X className="w-5 h-5 text-white" />
+            </button>
+
+            {/* Nav buttons */}
+            {lightboxIndex > 0 && (
+              <button
+                onClick={(e) => { e.stopPropagation(); navigateLightbox(-1); }}
+                className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors z-10"
+              >
+                <ChevronLeft className="w-6 h-6 text-white" />
+              </button>
+            )}
+            {lightboxIndex < filtered.length - 1 && (
+              <button
+                onClick={(e) => { e.stopPropagation(); navigateLightbox(1); }}
+                className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors z-10"
+              >
+                <ChevronRight className="w-6 h-6 text-white" />
+              </button>
+            )}
+
+            {/* Image */}
+            <motion.div
+              key={lightboxIndex}
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.9 }}
+              transition={{ duration: 0.3 }}
+              className="max-w-4xl w-full"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <img
+                src={filtered[lightboxIndex].src}
+                alt={filtered[lightboxIndex].title}
+                className="w-full max-h-[70vh] object-contain rounded-2xl"
+              />
+              <div className="mt-4 text-center">
+                <span className="font-body text-xs tracking-[0.15em] uppercase text-primary font-semibold">
+                  {filtered[lightboxIndex].category}
+                </span>
+                <h3 className="font-display text-xl font-bold text-white mt-1">{filtered[lightboxIndex].title}</h3>
+                <p className="text-sm text-white/60 font-body mt-1">{filtered[lightboxIndex].desc}</p>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* CTA */}
       <section className="py-24 md:py-32 bg-primary">
