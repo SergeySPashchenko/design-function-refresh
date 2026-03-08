@@ -52,6 +52,7 @@ const About = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
+      <main id="main-content" tabIndex={-1} className="outline-none">
 
       {/* HERO */}
       <section ref={heroRef} className="relative min-h-[70vh] flex items-center overflow-hidden">
@@ -230,6 +231,7 @@ const About = () => {
         </div>
       </section>
 
+      </main>
       <Footer />
     </div>
   );

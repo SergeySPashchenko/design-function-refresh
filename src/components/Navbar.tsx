@@ -49,6 +49,7 @@ const Navbar = () => {
 
   return (
     <motion.nav
+      aria-label="Main navigation"
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
@@ -127,6 +128,8 @@ const Navbar = () => {
           </button>
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
+            aria-label={mobileOpen ? "Close menu" : "Open menu"}
+            aria-expanded={mobileOpen}
             className={scrolled || !isHome ? "text-foreground" : "text-white"}
           >
             {mobileOpen ? <X size={24} /> : <Menu size={24} />}

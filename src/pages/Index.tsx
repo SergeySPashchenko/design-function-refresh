@@ -24,14 +24,16 @@ const Index = () => {
       </AnimatePresence>
       <div className="min-h-screen bg-background">
         <Navbar />
-        <HeroSection />
-        <AboutSection />
-        <StatsSection />
-        <ExpertiseSection />
-        <ProcessSection />
-        <TestimonialsSection />
-        <FAQSection />
-        <ContactSection />
+        <main id="main-content" tabIndex={-1} className="outline-none">
+          <HeroSection />
+          <AboutSection />
+          <StatsSection />
+          <ExpertiseSection />
+          <ProcessSection />
+          <TestimonialsSection />
+          <FAQSection />
+          <ContactSection />
+        </main>
         <Footer />
       </div>
     </>

@@ -106,6 +106,7 @@ const TestimonialsSection = () => {
         <div className="flex items-center justify-center gap-4 mt-8">
           <button
             onClick={() => go(-1)}
+            aria-label="Previous testimonial"
             className="w-10 h-10 rounded-full border border-border flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-primary transition-colors"
           >
             <ChevronLeft className="w-5 h-5" />
@@ -118,6 +119,7 @@ const TestimonialsSection = () => {
                   setDirection(i > current ? 1 : -1);
                   setCurrent(i);
                 }}
+                aria-label={`Go to testimonial ${i + 1}`}
                 className={`w-2 h-2 rounded-full transition-all ${
                   i === current ? "bg-primary w-6" : "bg-border"
                 }`}
@@ -126,6 +128,7 @@ const TestimonialsSection = () => {
           </div>
           <button
             onClick={() => go(1)}
+            aria-label="Next testimonial"
             className="w-10 h-10 rounded-full border border-border flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-primary transition-colors"
           >
             <ChevronRight className="w-5 h-5" />

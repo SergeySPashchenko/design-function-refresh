@@ -235,6 +235,7 @@ export default function Experience() {
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
+      <main id="main-content" tabIndex={-1} className="outline-none">
 
       {/* HERO */}
       <section ref={heroRef} className="relative min-h-screen flex items-center overflow-hidden">
@@ -449,6 +450,7 @@ export default function Experience() {
         </div>
       </section>
 
+      </main>
       <Footer />
     </div>
   );

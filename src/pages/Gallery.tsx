@@ -51,6 +51,7 @@ const Gallery = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
+      <main id="main-content" tabIndex={-1} className="outline-none">
 
       {/* HERO */}
       <section ref={heroRef} className="relative min-h-[70vh] flex items-center overflow-hidden">
@@ -86,11 +87,12 @@ const Gallery = () => {
           </motion.div>
 
           {/* Category Filter */}
-          <div className="flex flex-wrap justify-center gap-3 mb-12">
+          <div className="flex flex-wrap justify-center gap-3 mb-12" role="group" aria-label="Filter by category">
             {categories.map((cat) => (
               <button
                 key={cat}
                 onClick={() => setActiveCategory(cat)}
+                aria-pressed={activeCategory === cat}
                 className={`px-5 py-2.5 rounded-full font-body text-sm font-medium transition-all duration-300 ${
                   activeCategory === cat
                     ? "bg-primary text-primary-foreground shadow-lg shadow-primary/20"
@@ -141,12 +143,16 @@ const Gallery = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
+            role="dialog"
+            aria-modal="true"
+            aria-label={`Image: ${filtered[lightboxIndex!]?.title}`}
             className="fixed inset-0 z-[100] bg-black/90 backdrop-blur-sm flex items-center justify-center p-4 md:p-12"
             onClick={closeLightbox}
           >
             {/* Close */}
             <button
               onClick={closeLightbox}
+              aria-label="Close lightbox"
               className="absolute top-6 right-6 w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors z-10"
             >
               <X className="w-5 h-5 text-white" />
@@ -156,6 +162,7 @@ const Gallery = () => {
             {lightboxIndex > 0 && (
               <button
                 onClick={(e) => { e.stopPropagation(); navigateLightbox(-1); }}
+                aria-label="Previous image"
                 className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors z-10"
               >
                 <ChevronLeft className="w-6 h-6 text-white" />
@@ -164,6 +171,7 @@ const Gallery = () => {
             {lightboxIndex < filtered.length - 1 && (
               <button
                 onClick={(e) => { e.stopPropagation(); navigateLightbox(1); }}
+                aria-label="Next image"
                 className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors z-10"
               >
                 <ChevronRight className="w-6 h-6 text-white" />
@@ -212,6 +220,7 @@ const Gallery = () => {
         </div>
       </section>
 
+      </main>
       <Footer />
     </div>
   );

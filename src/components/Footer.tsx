@@ -22,18 +22,18 @@ const Footer = () => (
         </p>
       </div>
 
-      <div>
-        <h4 className="font-bold mb-6 uppercase tracking-wider text-sm">Navigation</h4>
-        <ul className="space-y-3 text-background/60 text-sm">
-          {navLinks.map((link) => (
-            <li key={link.href}>
-              <Link to={link.href} className="hover:text-primary transition-colors">
-                {link.label}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </div>
+        <nav aria-label="Footer navigation">
+          <h4 className="font-bold mb-6 uppercase tracking-wider text-sm">Navigation</h4>
+          <ul className="space-y-3 text-background/60 text-sm">
+            {navLinks.map((link) => (
+              <li key={link.href}>
+                <Link to={link.href} className="hover:text-primary transition-colors">
+                  {link.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
 
       <div>
         <h4 className="font-bold mb-6 uppercase tracking-wider text-sm">Locations</h4>
