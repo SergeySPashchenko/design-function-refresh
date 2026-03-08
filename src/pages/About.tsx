@@ -231,6 +231,7 @@ const About = () => {
         </div>
       </section>
 
+      </main>
       <Footer />
     </div>
   );

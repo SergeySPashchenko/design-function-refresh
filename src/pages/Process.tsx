@@ -236,6 +236,7 @@ const Process = () => {
         </div>
       </section>
 
+      </main>
       <Footer />
     </div>
   );
