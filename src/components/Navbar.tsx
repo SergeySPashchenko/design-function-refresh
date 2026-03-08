@@ -120,7 +120,7 @@ const Navbar = () => {
           <button
             onClick={toggleTheme}
             aria-label="Toggle dark mode"
-            className={scrolled || !isHome ? "text-foreground" : "text-hero-text"}
+            className={scrolled || !isHome ? "text-foreground" : "text-white"}
           >
             {dark ? <Sun size={20} /> : <Moon size={20} />}
           </button>
