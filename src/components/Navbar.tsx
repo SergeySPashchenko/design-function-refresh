@@ -86,7 +86,8 @@ const Navbar = () => {
             className={`relative w-10 h-10 rounded-full flex items-center justify-center transition-colors duration-300 ${
               scrolled || !isHome
                 ? "text-foreground hover:bg-muted"
-                : "text-primary-foreground/80 hover:bg-primary-foreground/10"
+                : "text-hero-text/80 hover:bg-hero-text/10"
+            }`}
             }`}
           >
             <AnimatePresence mode="wait">
