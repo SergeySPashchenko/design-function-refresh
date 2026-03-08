@@ -11,6 +11,7 @@ import Footer from "@/components/Footer";
 import Preloader from "@/components/Preloader";
 import { useState } from "react";
 import { AnimatePresence } from "framer-motion";
+import { useSEO } from "@/hooks/useSEO";
 
 const Index = () => {
   const [loading, setLoading] = useState(true);
