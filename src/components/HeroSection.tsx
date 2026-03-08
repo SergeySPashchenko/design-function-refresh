@@ -17,7 +17,7 @@ const HeroSection = () => {
           transition={{ delay: 0.3, duration: 0.8 }}
           className="font-body text-sm tracking-[0.3em] uppercase text-primary-foreground/70 mb-6"
         >
-          Idingo LLC · Est. 2008
+          Nice to meet you · Est. 2008
         </motion.p>
 
         <motion.h1
@@ -26,9 +26,9 @@ const HeroSection = () => {
           transition={{ delay: 0.5, duration: 0.8 }}
           className="font-display text-5xl md:text-7xl lg:text-8xl font-bold text-primary-foreground leading-[1.05] mb-8"
         >
-          Natural Formulas
+          We Make Wellness
           <br />
-          <span className="italic font-normal">Based on Science</span>
+          <span className="italic font-normal">Feel Personal</span>
           <span className="text-primary">.</span>
         </motion.h1>
 
@@ -38,7 +38,7 @@ const HeroSection = () => {
           transition={{ delay: 0.7, duration: 0.8 }}
           className="font-body text-lg md:text-xl text-primary-foreground/70 max-w-xl mx-auto mb-10"
         >
-          Your #1 health advocate — optimizing wellness through pure, organic, science-backed supplements.
+          Pure, organic, science-backed supplements — designed with you in mind. Because your health deserves better than generic.
         </motion.p>
 
         <motion.div
@@ -49,15 +49,22 @@ const HeroSection = () => {
         >
           <a
             href="#about"
-            className="inline-flex items-center justify-center px-8 py-4 bg-primary text-primary-foreground font-body font-semibold text-sm uppercase tracking-wider rounded-full hover:bg-accent transition-colors"
+            className="group inline-flex items-center justify-center px-8 py-4 bg-primary text-primary-foreground font-body font-semibold text-sm uppercase tracking-wider rounded-full hover:bg-accent transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/20"
           >
-            Discover More
+            <span>Let's Explore</span>
+            <motion.span
+              className="ml-2 inline-block"
+              animate={{ x: [0, 4, 0] }}
+              transition={{ repeat: Infinity, duration: 1.5 }}
+            >
+              →
+            </motion.span>
           </a>
           <a
             href="#contact"
-            className="inline-flex items-center justify-center px-8 py-4 border border-primary-foreground/30 text-primary-foreground font-body font-semibold text-sm uppercase tracking-wider rounded-full hover:bg-primary-foreground/10 transition-colors"
+            className="inline-flex items-center justify-center px-8 py-4 border border-primary-foreground/30 text-primary-foreground font-body font-semibold text-sm uppercase tracking-wider rounded-full hover:bg-primary-foreground/10 transition-all duration-300 hover:border-primary-foreground/60"
           >
-            Get in Touch
+            Say Hello
           </a>
         </motion.div>
       </div>
