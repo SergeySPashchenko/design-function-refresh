@@ -36,7 +36,10 @@ const team = [
 ];
 
 const About = () => {
+  const heroRef = useRef<HTMLElement>(null);
   const timelineRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress: heroProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
+  const heroImgY = useTransform(heroProgress, [0, 1], ["0%", "30%"]);
   const { scrollYProgress } = useScroll({
     target: timelineRef,
     offset: ["start end", "end start"],
