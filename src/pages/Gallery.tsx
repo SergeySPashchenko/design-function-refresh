@@ -213,6 +213,7 @@ const Gallery = () => {
         </div>
       </section>
 
+      </main>
       <Footer />
     </div>
   );

@@ -450,6 +450,7 @@ export default function Experience() {
         </div>
       </section>
 
+      </main>
       <Footer />
     </div>
   );
