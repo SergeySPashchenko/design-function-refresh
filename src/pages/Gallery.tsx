@@ -28,6 +28,7 @@ const galleryItems = [
 const categories = ["All", "Products", "Research", "Sourcing", "Logistics"];
 
 const Gallery = () => {
+  useSEO({ title: "Gallery — IDINGO Products & Facilities", description: "Explore IDINGO's facilities, products, and the commitment to quality at every step of our process." });
   const heroRef = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
   const heroImgY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
