@@ -41,6 +41,9 @@ const locations = [
 
 const Contact = () => {
   const { toast } = useToast();
+  const heroRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
+  const heroImgY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
