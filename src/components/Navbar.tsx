@@ -58,7 +58,7 @@ const Navbar = () => {
     >
       <div className="container mx-auto flex items-center justify-between py-4 px-6">
         <Link to="/" className="font-display text-2xl font-bold tracking-tight">
-          <span className={scrolled || !isHome ? "text-foreground" : "text-hero-text"}>
+          <span className={scrolled || !isHome ? "text-foreground" : "text-white"}>
             IDINGO
           </span>
           <span className="text-primary">.</span>
