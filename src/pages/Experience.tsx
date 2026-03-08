@@ -81,7 +81,6 @@ function TimelineStep({ item, index, total }: { item: typeof researchJourney[0];
     offset: ["start 0.85", "start 0.3"],
   });
   const [isActive, setIsActive] = useState(false);
-  const lineScaleY = useTransform(scrollYProgress, [0, 1], [0, 1]);
 
   useMotionValueEvent(scrollYProgress, "change", (v) => {
     setIsActive(v > 0.3);
@@ -90,8 +89,6 @@ function TimelineStep({ item, index, total }: { item: typeof researchJourney[0];
   const Icon = item.icon;
   const isLeft = index % 2 === 0;
 
-  // Mobile: single column, all content on right
-  // Desktop: zigzag left/right
   return (
     <div ref={ref} className="relative">
       {/* MOBILE layout */}
@@ -108,14 +105,6 @@ function TimelineStep({ item, index, total }: { item: typeof researchJourney[0];
           >
             <Icon className={`w-5 h-5 transition-colors duration-500 ${isActive ? "text-primary-foreground" : "text-muted-foreground"}`} />
           </motion.div>
-          {index < total - 1 && (
-            <div className="relative w-0.5 flex-1 bg-border -mt-px">
-              <motion.div
-                className="absolute inset-0 origin-top bg-primary"
-                style={{ scaleY: lineScaleY }}
-              />
-            </div>
-          )}
         </div>
         <motion.div
           initial={{ opacity: 0, x: 30 }}
@@ -171,8 +160,8 @@ function TimelineStep({ item, index, total }: { item: typeof researchJourney[0];
           )}
         </div>
 
-        {/* Center timeline */}
-        <div className="flex flex-col items-center">
+        {/* Center dot only — line is in parent */}
+        <div className="flex justify-center">
           <motion.div
             initial={{ scale: 0 }}
             whileInView={{ scale: 1 }}
@@ -184,14 +173,6 @@ function TimelineStep({ item, index, total }: { item: typeof researchJourney[0];
           >
             <Icon className={`w-6 h-6 transition-colors duration-500 ${isActive ? "text-primary-foreground" : "text-muted-foreground"}`} />
           </motion.div>
-          {index < total - 1 && (
-            <div className="relative w-0.5 flex-1 bg-border -mt-px">
-              <motion.div
-                className="absolute inset-0 origin-top bg-primary"
-                style={{ scaleY: lineScaleY }}
-              />
-            </div>
-          )}
         </div>
 
         {/* Right content */}
@@ -242,7 +223,7 @@ export default function Experience() {
         <motion.div className="absolute inset-0 z-0" style={{ y: heroImgY }}>
           <img src={botanicalHero} alt="Botanical research ingredients" className="w-full h-full object-cover scale-[1.15]" />
         </motion.div>
-        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/40 z-10" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-black/20 z-10" />
         <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent z-10" />
         <div className="relative z-20 container mx-auto px-6 pt-24">
           <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2, duration: 0.8 }} className="font-body text-sm tracking-[0.3em] uppercase text-primary font-semibold mb-4">
@@ -280,10 +261,17 @@ export default function Experience() {
             </p>
           </motion.div>
 
-          <div className="max-w-5xl mx-auto">
-            {researchJourney.map((item, i) => (
-              <TimelineStep key={item.step} item={item} index={i} total={researchJourney.length} />
-            ))}
+          <div className="max-w-5xl mx-auto relative">
+            {/* Continuous timeline line — mobile */}
+            <div className="md:hidden absolute left-[23px] top-0 bottom-0 w-0.5 bg-border" />
+            {/* Continuous timeline line — desktop */}
+            <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-border -translate-x-px" />
+
+            <div className="flex flex-col gap-8 md:gap-12">
+              {researchJourney.map((item, i) => (
+                <TimelineStep key={item.step} item={item} index={i} total={researchJourney.length} />
+              ))}
+            </div>
           </div>
         </div>
       </section>

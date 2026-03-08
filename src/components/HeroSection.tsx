@@ -16,8 +16,8 @@ const HeroSection = () => {
           className="w-full h-full object-cover scale-[1.15]"
         />
         {/* Multi-layer overlay for guaranteed readability */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/80" />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-transparent to-black/40" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/35 to-black/60" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/25 via-transparent to-black/25" />
       </motion.div>
 
       <div className="relative z-10 container mx-auto px-6 text-center">
