@@ -127,7 +127,7 @@ const Navbar = () => {
           </button>
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className={scrolled || !isHome ? "text-foreground" : "text-primary-foreground"}
+            className={scrolled || !isHome ? "text-foreground" : "text-hero-text"}
           >
             {mobileOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
