@@ -1,5 +1,6 @@
-import { motion } from "framer-motion";
-import { FlaskConical, Leaf, ShieldCheck, Heart, Users, Target } from "lucide-react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
+import { FlaskConical, Leaf, ShieldCheck, Heart, Users, Target, Rocket, Award, Globe, TrendingUp } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import StatsSection from "@/components/StatsSection";
@@ -19,6 +20,15 @@ const values = [
   { icon: Target, title: "Results Focused", desc: "We measure success by your outcomes. If it doesn't work, it doesn't ship." },
 ];
 
+const milestones = [
+  { year: "2019", title: "Founded", desc: "IDINGO was born from a simple idea: supplements should be backed by science, not marketing.", icon: Rocket },
+  { year: "2020", title: "First Product Launch", desc: "Our flagship cognitive support formula hit the market — sold out in 3 weeks.", icon: Award },
+  { year: "2021", title: "10,000 Customers", desc: "Word spread fast. We crossed 10K customers without a single paid ad.", icon: Users },
+  { year: "2022", title: "GMP Certification", desc: "Our Oklahoma City facility received full GMP certification for pharmaceutical-grade production.", icon: ShieldCheck },
+  { year: "2023", title: "International Expansion", desc: "Expanded distribution to 15 countries across Europe, Asia, and South America.", icon: Globe },
+  { year: "2024", title: "30+ Products", desc: "Our product line grew to over 30 evidence-based formulations across 6 wellness categories.", icon: TrendingUp },
+];
+
 const team = [
   { role: "Research & Development", desc: "PhD-level scientists developing evidence-based formulations with clinical precision." },
   { role: "Quality Assurance", desc: "Rigorous testing protocols ensuring every batch meets pharmaceutical-grade standards." },
@@ -26,6 +36,13 @@ const team = [
 ];
 
 const About = () => {
+  const timelineRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: timelineRef,
+    offset: ["start end", "end start"],
+  });
+  const lineHeight = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
+
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
@@ -73,8 +90,59 @@ const About = () => {
         </div>
       </section>
 
-      {/* VALUES */}
+      {/* COMPANY TIMELINE */}
       <section className="py-24 md:py-32 bg-card">
+        <div className="container mx-auto px-6">
+          <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="text-center mb-20">
+            <p className="font-body text-sm tracking-[0.2em] uppercase text-primary font-semibold mb-3">Our Journey</p>
+            <h2 className="font-display text-3xl md:text-5xl font-bold text-foreground">
+              Key <span className="italic text-primary">milestones</span>
+            </h2>
+          </motion.div>
+
+          <div ref={timelineRef} className="relative max-w-4xl mx-auto">
+            {/* Progress line */}
+            <div className="absolute left-6 md:left-1/2 top-0 bottom-0 w-0.5 bg-border md:-translate-x-px">
+              <motion.div className="absolute top-0 left-0 w-full bg-primary origin-top" style={{ height: lineHeight }} />
+            </div>
+
+            {milestones.map((m, i) => {
+              const Icon = m.icon;
+              const isLeft = i % 2 === 0;
+              return (
+                <motion.div
+                  key={m.year}
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: 0.1 }}
+                  className={`relative flex items-start gap-8 mb-16 last:mb-0 ${isLeft ? "md:flex-row" : "md:flex-row-reverse"}`}
+                >
+                  {/* Dot */}
+                  <motion.div
+                    whileHover={{ scale: 1.2 }}
+                    className="absolute left-6 md:left-1/2 w-12 h-12 -translate-x-1/2 z-10 rounded-full bg-background border-2 border-primary flex items-center justify-center transition-all duration-300 hover:bg-primary hover:shadow-lg hover:shadow-primary/30 group"
+                  >
+                    <Icon className="w-5 h-5 text-primary group-hover:text-primary-foreground transition-colors" />
+                  </motion.div>
+
+                  {/* Content */}
+                  <div className={`ml-16 md:ml-0 md:w-1/2 ${isLeft ? "md:pr-16 md:text-right" : "md:pl-16"}`}>
+                    <span className="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary font-body text-xs font-semibold tracking-wider mb-2">{m.year}</span>
+                    <h3 className="font-display text-xl font-semibold text-foreground mb-2">{m.title}</h3>
+                    <p className="font-body text-muted-foreground leading-relaxed text-sm">{m.desc}</p>
+                  </div>
+
+                  <div className="hidden md:block md:w-1/2" />
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* VALUES */}
+      <section className="py-24 md:py-32">
         <div className="container mx-auto px-6">
           <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="text-center mb-16">
             <p className="font-body text-sm tracking-[0.2em] uppercase text-primary font-semibold mb-3">Our Values</p>
@@ -93,7 +161,7 @@ const About = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.1 }}
-                  className="p-6 rounded-2xl bg-background border border-border hover:border-primary/40 transition-all duration-300 group"
+                  className="p-6 rounded-2xl bg-card border border-border hover:border-primary/40 transition-all duration-300 group"
                 >
                   <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
                     <Icon className="w-5 h-5 text-primary" />
