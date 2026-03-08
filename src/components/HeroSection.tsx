@@ -11,7 +11,7 @@ const HeroSection = () => {
       {/* Background */}
       <motion.div className="absolute inset-0" style={{ y: imgY }}>
         <img
-          src={`${import.meta.env.BASE_URL}assets/lab.png`}
+          src={`${import.meta.env.BASE_URL}assets/hero-main.jpg`}
           alt="Natural supplements and herbs"
           className="w-full h-full object-cover scale-[1.15]"
         />
