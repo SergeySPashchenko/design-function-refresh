@@ -47,7 +47,10 @@ const positionOptions = [
 
 const Career = () => {
   const { toast } = useToast();
+  const heroRef = useRef<HTMLElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
+  const heroImgY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
   const [formData, setFormData] = useState({ name: "", email: "", position: "", message: "" });
   const [file, setFile] = useState<File | null>(null);
   const [submitting, setSubmitting] = useState(false);
