@@ -1,10 +1,10 @@
 import { motion } from "framer-motion";
 
 const steps = [
-  { num: "01", title: "Research", desc: "We source only the finest compounds, backed by scientific data, to create top quality formulas." },
-  { num: "02", title: "Formulation", desc: "Synergistic herbal blends, minerals, vitamins and botanicals come together to form products that work." },
-  { num: "03", title: "Distribution", desc: "Building trust through consistency, efficacy, safety and quality with a network of global suppliers." },
-  { num: "04", title: "Education", desc: "We share up-to-date information to inspire and educate future generations to enjoy improved health." },
+  { num: "01", title: "We Listen", desc: "It starts with understanding what your body needs. We research, test, and iterate until the science says 'yes'." },
+  { num: "02", title: "We Formulate", desc: "Our team blends herbs, minerals, and vitamins into synergistic formulas that your body actually absorbs." },
+  { num: "03", title: "We Deliver", desc: "From our GMP-certified facilities to your doorstep — fresh, tested, and ready to work for you." },
+  { num: "04", title: "We Educate", desc: "Because an informed customer is our best customer. We share the science behind every capsule." },
 ];
 
 const ProcessSection = () => {
@@ -19,9 +19,9 @@ const ProcessSection = () => {
           className="text-center mb-20"
         >
           <p className="font-body text-sm tracking-[0.2em] uppercase text-primary font-semibold mb-3">
-            Optimal Health & Wellness
+            How We Work
           </p>
-          <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground">The Journey</h2>
+          <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground">Your Journey With Us</h2>
           <div className="w-16 h-0.5 bg-primary mx-auto mt-6" />
         </motion.div>
 
@@ -41,7 +41,10 @@ const ProcessSection = () => {
               }`}
             >
               {/* Dot */}
-              <div className="absolute left-8 md:left-1/2 w-4 h-4 bg-primary rounded-full -translate-x-1/2 mt-2 z-10 ring-4 ring-background" />
+              <motion.div
+                whileHover={{ scale: 1.5 }}
+                className="absolute left-8 md:left-1/2 w-4 h-4 bg-primary rounded-full -translate-x-1/2 mt-2 z-10 ring-4 ring-background transition-shadow duration-300 hover:shadow-lg hover:shadow-primary/30"
+              />
 
               {/* Content */}
               <div className={`ml-16 md:ml-0 md:w-1/2 ${i % 2 === 0 ? "md:pr-16 md:text-right" : "md:pl-16"}`}>

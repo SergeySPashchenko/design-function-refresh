@@ -8,21 +8,31 @@ import TestimonialsSection from "@/components/TestimonialsSection";
 import FAQSection from "@/components/FAQSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
+import Preloader from "@/components/Preloader";
+import { useState } from "react";
+import { AnimatePresence } from "framer-motion";
 
 const Index = () => {
+  const [loading, setLoading] = useState(true);
+
   return (
-    <div className="min-h-screen bg-background">
-      <Navbar />
-      <HeroSection />
-      <AboutSection />
-      <StatsSection />
-      <ExpertiseSection />
-      <ProcessSection />
-      <TestimonialsSection />
-      <FAQSection />
-      <ContactSection />
-      <Footer />
-    </div>
+    <>
+      <AnimatePresence>
+        {loading && <Preloader onComplete={() => setLoading(false)} />}
+      </AnimatePresence>
+      <div className="min-h-screen bg-background">
+        <Navbar />
+        <HeroSection />
+        <AboutSection />
+        <StatsSection />
+        <ExpertiseSection />
+        <ProcessSection />
+        <TestimonialsSection />
+        <FAQSection />
+        <ContactSection />
+        <Footer />
+      </div>
+    </>
   );
 };
 

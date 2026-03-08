@@ -115,3 +115,14 @@ html {
     font-family: 'DM Sans', sans-serif;
   }
 }
+
+/* Smooth selection */
+::selection {
+  background-color: hsl(152, 45%, 28%);
+  color: hsl(40, 30%, 97%);
+}
+
+.dark::selection {
+  background-color: hsl(152, 45%, 40%);
+  color: hsl(30, 10%, 8%);
+}
