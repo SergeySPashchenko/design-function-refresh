@@ -19,6 +19,7 @@ export default {
       },
       colors: {
         "hero-overlay": "hsl(var(--hero-overlay))",
+        "hero-text": "hsl(var(--hero-text))",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",

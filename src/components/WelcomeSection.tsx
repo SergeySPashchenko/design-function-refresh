@@ -41,7 +41,7 @@ const WelcomeSection = () => {
                               >
                                     <div className="aspect-square rounded-3xl overflow-hidden shadow-2xl">
                                           <img
-                                                src="/design-function-refresh/assets/herbs.png"
+                                                src={`${import.meta.env.BASE_URL}assets/herbs.png`}
                                                 alt="Idingo facilities"
                                                 className="w-full h-full object-cover"
                                           />

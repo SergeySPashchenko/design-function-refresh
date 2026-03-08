@@ -41,6 +41,7 @@ html {
     --radius: 0.75rem;
 
     --hero-overlay: 30 15% 10%;
+    --hero-text: 40 30% 97%;
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
@@ -80,6 +81,9 @@ html {
     --border: 30 8% 20%;
     --input: 30 8% 20%;
     --ring: 152 45% 40%;
+
+    --hero-overlay: 30 10% 6%;
+    --hero-text: 40 20% 92%;
 
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;

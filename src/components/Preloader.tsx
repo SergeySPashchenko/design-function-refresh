@@ -22,7 +22,7 @@ const Preloader = ({ onComplete }: { onComplete: () => void }) => {
     <motion.div
       exit={{ opacity: 0, scale: 1.05 }}
       transition={{ duration: 0.6, ease: "easeInOut" }}
-      className="fixed inset-0 z-[100] bg-foreground flex flex-col items-center justify-center"
+      className="fixed inset-0 z-[100] bg-[hsl(30,10%,8%)] flex flex-col items-center justify-center"
     >
       <motion.div
         initial={{ opacity: 0, scale: 0.8 }}
@@ -30,15 +30,15 @@ const Preloader = ({ onComplete }: { onComplete: () => void }) => {
         transition={{ duration: 0.5 }}
         className="text-center"
       >
-        <h1 className="font-display text-5xl md:text-7xl font-bold text-primary-foreground mb-2">
+        <h1 className="font-display text-5xl md:text-7xl font-bold text-[hsl(40,20%,92%)] mb-2">
           IDINGO<span className="text-primary">.</span>
         </h1>
-        <p className="font-body text-xs tracking-[0.3em] uppercase text-primary-foreground/40 mb-8">
+        <p className="font-body text-xs tracking-[0.3em] uppercase text-[hsl(40,20%,92%)]/40 mb-8">
           Advanced Nutritional Science
         </p>
       </motion.div>
 
-      <div className="w-48 h-px bg-primary-foreground/10 relative overflow-hidden rounded-full">
+      <div className="w-48 h-px bg-[hsl(40,20%,92%)]/10 relative overflow-hidden rounded-full">
         <motion.div
           className="absolute inset-y-0 left-0 bg-primary"
           style={{ width: `${Math.min(progress, 100)}%` }}
@@ -50,7 +50,7 @@ const Preloader = ({ onComplete }: { onComplete: () => void }) => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.3 }}
-        className="font-body text-[10px] tracking-widest uppercase text-primary-foreground/30 mt-4"
+        className="font-body text-[10px] tracking-widest uppercase text-[hsl(40,20%,92%)]/30 mt-4"
       >
         {Math.min(Math.round(progress), 100)}%
       </motion.p>
