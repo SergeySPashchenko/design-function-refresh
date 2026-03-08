@@ -27,7 +27,7 @@ const Footer = () => (
         <ul className="space-y-3 text-sm">
           {navLinks.map((link) => (
             <li key={link.href}>
-              <Link to={link.href} className="text-[hsl(40,10%,50%)] hover:text-primary transition-colors">
+              <Link to={link.href} className="text-[hsl(40,10%,60%)] hover:text-primary transition-colors">
                 {link.label}
               </Link>
             </li>
